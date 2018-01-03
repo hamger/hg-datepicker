@@ -3,7 +3,8 @@
 ## Demo
 [点击这里可跳转到演示页面](https://hamger.github.io/demo/picker/picker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。 
 ## 下载插件
-`npm i hg-datepicker`下载
+Github下载地址[https://github.com/hamger/hg-datepicker](https://github.com/hamger/hg-datepicker),
+也可以通过`npm i hg-datepicker`下载。
 ## 快速使用 
 首先引入文件
 ```html
