@@ -1,6 +1,20 @@
 {
   "name": "hg-datepicker",
-  "author": "Hanger (https://hamger.github.io)",
-  "version": "0.1.14",
+  "version": "0.1.16",
+  "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
+  "description": "Hanger‘s datepicker",
+  "keywords": [
+    "hanger",
+    "datepicker"
+  ],
+  "homepage": "https://github.com/hamger/hg-datepicker",
+  "bugs": {
+    "url": "https://github.com/hamger/hg-datepicker/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamger/hg-datepicker.git"
+  },
   "main": "datepicker.min.js"
 }
