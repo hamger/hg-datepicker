@@ -1,0 +1,6 @@
+{
+  "name": "hg-datepicker",
+  "author": "Hanger (https://hamger.github.io)",
+  "version": "0.1.14",
+  "main": "datepicker.min.js"
+}
