@@ -3,7 +3,7 @@
 ![npm](https://img.shields.io/badge/npm-v0.1.16-blue.svg)
 ![licence](https://img.shields.io/badge/licence-MIT-orange.svg)
 ## Demo
-[点击这里可跳转到演示页面](https://hamger.github.io/demo/picker/picker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。 
+[点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。 
 ## 下载插件
 * Github下载：[下载地址](https://github.com/hamger/hg-datepicker)
 * npm下载：`npm i hg-datepicker`
