@@ -13,11 +13,6 @@
 <link rel="stylesheet" type="text/css" href="./picker.min.css" />
 <script src="./datepicker.min.js"></script>
 ```
-如果你使用构建工具，这样引入
-```js
-import 'hg-datepicker/picker.min.css';
-import DatePicker from 'hg-datepicker';
-```
 实例化日期选择器`new DatePicker(option)`
 ```js
 new DatePicker({
@@ -26,6 +21,27 @@ new DatePicker({
         console.log(arr);
     }
 });
+```
+
+如果你使用构建工具，可以这样引入
+```js
+import 'hg-datepicker/picker.min.css';
+import DatePicker from 'hg-datepicker';
+```
+在`vue`中实例化插件，如果数据是异步请求过来的，实例化写在请求成功后的回调中
+```js
+...
+mounted () {
+	this.$nextTick(() => {
+		new DatePicker({
+		    inputId: 'date-input', // 目标DOM元素ID
+		    success: function(arr) { // 回调函数
+		        console.log(arr);
+		    }
+		});
+	});
+}
+...
 ```
 ## 日期选择器配置项
 `option`是一个配置项的对象，可以接受如下选项：
