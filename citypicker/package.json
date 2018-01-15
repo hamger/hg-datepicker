@@ -1,0 +1,20 @@
+{
+  "name": "hg-citypicker",
+  "version": "0.2.7",
+  "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
+  "description": "Hanger‘s citypicker",
+  "keywords": [
+    "hanger",
+    "citypicker"
+  ],
+  "homepage": "https://github.com/hamger/hg-citypicker",
+  "bugs": {
+    "url": "https://github.com/hamger/hg-citypicker/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamger/hg-citypicker.git"
+  },
+  "main": "citypicker.min.js"
+}
