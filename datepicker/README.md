@@ -1,6 +1,6 @@
 # hg-datepicker
 ![build](https://img.shields.io/badge/build-passed-brightgreen.svg)
-![npm](https://img.shields.io/badge/npm-v0.1.16-blue.svg)
+![npm](https://img.shields.io/badge/npm-v0.2.4-blue.svg)
 ![licence](https://img.shields.io/badge/licence-MIT-orange.svg)
 ## Demo
 [点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。 
@@ -69,15 +69,8 @@ style | Obeject | 包含样式配置的对象
 key | value | description
 --------|------|-----
 liHeight | Number | 每一个选择栏的高度（px），默认 `40`
-btnHeight | Number | 按钮栏的高度（px），默认 `40`
+btnHeight | Number | 按钮栏的高度（px），默认 `44`
 btnOffset | String | 按钮离边框的距离，默认 `20px`
-width | String | 选择器的宽度，默认 `100%`
-left | String | 选择器的左边缘与左侧屏幕的距离，默认 `0px`
-bottom | String | 选择器的下边缘与底部屏幕的距离，默认 `0px`
-right | String | 选择器的右边缘与右侧屏幕的距离，默认不设置
-top | String | 选择器的上边缘与顶部屏幕的距离，默认不设置
-location | `top` \| `bottom` \| `center` | 选择器垂直方向的位置，优先级高于`top`和`bottom`，默认不设置
-radius | String | 选择器的圆角设置，默认不设置
 titleColor | String | 选择器标题的字体颜色
 sureBtnColor | String | 选择器确定按钮的字体颜色
 abolishBtnColor | String | 选择器取消按钮的字体颜色
