@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="screen-orientation" content="portrait">
-    <title>hg-picker</title>
+    <title>hg-datepicker</title>
     <link rel="shortcut icon" href="http://olislpb6q.bkt.clouddn.com/header.jpg" />
     <link rel="stylesheet" type="text/css" href="./picker.css" />
     <style>
@@ -77,19 +77,17 @@
     var a2 = now.getMonth() + 1
     var a3 = now.getDate()
 
-    var pass = new Date(now.getTime() - 86400 * 1000 * 90)
+    var pass = new Date(now.getTime() - 86400 * 1000 * 5000)
     var a4 = pass.getFullYear() 
     var a5 = pass.getMonth() + 1
     var a6 = pass.getDate()
 
     new DatePicker({
         inputId: 'date-input', // 目标DOM元素ID
+        start: [a4,a5,a6], // 开始时间
+        end: [a1,a2,a3], // 结束时间
         style: {
-            top: '120px',
-            left: '3%',
-            width: '94%',
             btnLocation: 'bottom',
-            radius: '10px',
             liHeight: 45,
             btnHeight: 50,
             btnOffset: '30px',
@@ -116,9 +114,8 @@
         inputId: 'date-input2',
         type: 'time', // 选择器类型
         start: [2, 30], // 开始时间
-        end: [19, 20], // 结束时间
+        end: [22, 20], // 结束时间
         style: {
-            radius: '6px',
             btnHeight: 46
         },
         success: function(arr) {
@@ -129,7 +126,10 @@
     new DatePicker({
         inputId: 'date-input3',
         type: 'dateTime',
-        start: [2120, 2, 2, 2, 20], // 开始时间
+        style: {
+            btnHeight: 44
+        },
+        start: [2020, 2, 2, 2, 20], // 开始时间
         end: [2120, 4, 4, 5, 50], // 结束时间
         hasSuffix: 'no', // 不添加时间单位
         hasZero: 'no', // 单位数不显两位

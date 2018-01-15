@@ -196,7 +196,7 @@
             this.wrapId = this.inputId + '-wrap' // 选择器外包裹元素ID
             this.ulCount = 0 // 展示的列数
             this.liHeight = this.style && this.style.liHeight ? this.style.liHeight : 40 // 每个li的高度
-            this.btnHeight = this.style && this.style.btnHeight ? this.style.btnHeight : 40 // 按钮的高度
+            this.btnHeight = this.style && this.style.btnHeight ? this.style.btnHeight : 44 // 按钮的高度
             this.dateUl = [] // 每个ul元素
             this.liNum = [] // 每个ul中有多少个可选li
             this.curDis = [] // 每个ul当前偏离的距离
@@ -498,7 +498,7 @@
                 var abolishBtn = $id(this.abolish)
                 var len = content.children.length
                 // 设置高宽
-                if (obj.liHeight) {
+                if (obj.liHeight !== 40) {
                     for (var i = 0; i < this.ulCount; i++) {
                         setChildStyle(content.children[i], 'height', this.liHeight + 'px')
                     };
@@ -509,7 +509,7 @@
                     content.style.height = this.liHeight * 5 + 'px'
                     content.style.lineHeight = this.liHeight + 'px'
                 }
-                if (obj.btnHeight) {
+                if (obj.btnHeight !== 44) {
                     box.style.height = this.btnHeight + 'px'
                     box.style.lineHeight = this.btnHeight + 'px'
                 }
@@ -517,10 +517,10 @@
                     sureBtn.style.marginRight = obj.btnOffset
                     abolishBtn.style.marginLeft = obj.btnOffset
                 }
-                if (obj.liHeight || obj.btnHeight) container.style.height = this.liHeight * 5 + this.btnHeight + 'px'
+                if (obj.liHeight !==  40 || obj.btnHeight !== 44) container.style.height = this.liHeight * 5 + this.btnHeight + 'px'
                 if (obj.width) container.style.width = obj.width
                 // 设置圆角
-                if (obj.radius) container.style.borderRadius = obj.radius
+                if (obj.radius) container.style.borderRadius = obj.radius + ' ' + obj.radius + ' ' + obj.radius + ' ' + obj.radius;
                 // 设置定位
                 if (obj.right) container.style.right = obj.right
                 if (obj.left) container.style.left = obj.left
@@ -718,7 +718,7 @@
          */
         show: function(wrap, container) {
             wrap.classList.add('hg-picker-bg-show')
-            container.style.display = 'block'
+            container.classList.add('hg-picker-container-up')
         },
         /**
          * 隐藏选择器
@@ -727,7 +727,7 @@
          */
         hide: function(wrap, container) {
             wrap.classList.remove('hg-picker-bg-show')
-            container.style.display = 'none'
+            container.classList.remove('hg-picker-container-up')
         }
     }
 

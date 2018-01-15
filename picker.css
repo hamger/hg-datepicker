@@ -8,7 +8,7 @@
     overflow: hidden;
     transition: all .3s ease;
     -webkit-transition: all .3s ease;
-    z-index: -99;
+    z-index: -1;
 }
 
 .hg-picker-bg-show {
@@ -18,18 +18,27 @@
 
 .hg-picker-container {
     width: 100%;
-    height: 240px;
+    height: 244px;
     position: absolute;
     bottom: 0;
+    transform: translate3d(0, 101%, 0);
+    -webkit-transform: translate3d(0, 101%, 0);
+    left: 0;
     background-color: #FFF;
-    overflow: hidden;
-    display: none;
+    transition: transform .3s ease;
+    -webkit-transition: -webkit-transform .3s ease;
+    z-index: -1;
+}
+
+.hg-picker-container-up {
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .hg-picker-btn-box {
     text-align: center;
-    height: 40px;
-    line-height: 40px;
+    height: 44px;
+    line-height: 44px;
     background: #f0f0f0;
 }
 
