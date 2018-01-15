@@ -1,6 +1,6 @@
 # hg-datepicker
 ![build](https://img.shields.io/badge/build-passed-brightgreen.svg)
-![npm](https://img.shields.io/badge/npm-v0.2.4-blue.svg)
+![npm](https://img.shields.io/badge/npm-v0.2.6-blue.svg)
 ![licence](https://img.shields.io/badge/licence-MIT-orange.svg)
 ## Demo
 [点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。 
@@ -72,8 +72,8 @@ liHeight | Number | 每一个选择栏的高度（px），默认 `40`
 btnHeight | Number | 按钮栏的高度（px），默认 `44`
 btnOffset | String | 按钮离边框的距离，默认 `20px`
 titleColor | String | 选择器标题的字体颜色
-sureBtnColor | String | 选择器确定按钮的字体颜色
-abolishBtnColor | String | 选择器取消按钮的字体颜色
+sureColor | String | 选择器确定按钮的字体颜色
+cancelColor | String | 选择器取消按钮的字体颜色
 btnBgColor | String | 选择器按钮栏的背景颜色
 contentColor | String | 选择器选择区域的文字颜色
 contentBgColor | String | 选择器选择区域的背景颜色
