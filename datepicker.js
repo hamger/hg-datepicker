@@ -104,7 +104,6 @@
             ];
         }
         this.a = config.a // 惯性滚动加速度（正数, 单位 px/(ms * ms)），选填，默认 0.001
-        this.f = config.f // 惯性滚动阈值（正数, 单位 px/ms），选填，默认 0.85
         this.style = config.style // 选择器样式, 选填
         this.hasSuffix = config.hasSuffix || 'yes' // 是否添加时间单位，选填
         this.hasZero = config.hasZero || 'yes' // 一位数是否显示两位，选填
@@ -388,7 +387,7 @@
                     }
                 }
             }
-            this.curDis[i] = this.liHeight * this.dateIndex[i]
+            this.curDis[i] = -1 * this.liHeight * this.dateIndex[i]
         },
         /**
          * 根据选择器类型确定 dateArr
@@ -495,7 +494,7 @@
                 var content = $id(this.content)
                 var box = $id(this.box)
                 var sureBtn = $id(this.sure)
-                var abolishBtn = $id(this.abolish)
+                var cancelBtn = $id(this.abolish)
                 var len = content.children.length
                 // 设置高宽
                 if (obj.liHeight !== 40) {
@@ -515,29 +514,15 @@
                 }
                 if (obj.btnOffset) {
                     sureBtn.style.marginRight = obj.btnOffset
-                    abolishBtn.style.marginLeft = obj.btnOffset
+                    cancelBtn.style.marginLeft = obj.btnOffset
                 }
-                if (obj.liHeight !==  40 || obj.btnHeight !== 44) container.style.height = this.liHeight * 5 + this.btnHeight + 'px'
-                if (obj.width) container.style.width = obj.width
-                // 设置圆角
-                if (obj.radius) container.style.borderRadius = obj.radius + ' ' + obj.radius + ' ' + obj.radius + ' ' + obj.radius;
-                // 设置定位
-                if (obj.right) container.style.right = obj.right
-                if (obj.left) container.style.left = obj.left
-                if (!obj.location) {
-                    if (obj.bottom) container.style.bottom = obj.bottom
-                    if (obj.top) container.style.top = obj.top
-                } else {
-                    if (obj.location === 'bottom') container.style.bottom = 0
-                    if (obj.location === 'top') container.style.top = 0
-                    if (obj.location === 'center') {
-                        container.style.top = 0.5 * (window.screen.availHeight - this.liHeight * 5 - this.btnHeight) + 'px'
-                    }
+                if (obj.liHeight !==  40 || obj.btnHeight !== 44) {
+                    container.style.height = this.liHeight * 5 + this.btnHeight + 'px'
                 }
                 // 设置配色
                 if(obj.titleColor) box.style.color = obj.titleColor
                 if(obj.sureColor) sureBtn.style.color = obj.sureColor
-                if(obj.cancelColor) abolishBtn.style.color = obj.cancelColor
+                if(obj.cancelColor) cancelBtn.style.color = obj.cancelColor
                 if(obj.btnBgColor) box.style.backgroundColor = obj.btnBgColor
                 if(obj.contentColor) content.style.color = obj.contentColor
                 if(obj.contentBgColor) content.style.backgroundColor = obj.contentBgColor
@@ -577,16 +562,11 @@
          */
         roll: function(i, time) {
             if (this.curDis[i] || this.curDis[i] === 0) {
-                if (this.curDis[i] >= 0) {
-                    this.dateUl[i].style.transform = 'translate3d(0,-' + this.curDis[i] + 'px, 0)'
-                    this.dateUl[i].style.webkitTransform = 'translate3d(0,-' + this.curDis[i] + 'px, 0)'
-                } else {
-                    this.dateUl[i].style.transform = 'translate3d(0,' + Math.abs(this.curDis[i]) + 'px, 0)'
-                    this.dateUl[i].style.webkitTransform = 'translate3d(0,' + Math.abs(this.curDis[i]) + 'px, 0)'
-                }
+                this.dateUl[i].style.transform = 'translate3d(0, ' + this.curDis[i] + 'px, 0)'
+                this.dateUl[i].style.webkitTransform = 'translate3d(0, ' + this.curDis[i] + 'px, 0)'
                 if (time) {
-                    this.dateUl[i].style.transition = 'transform ' + time + 's linear'
-                    this.dateUl[i].style.webkitTransition = '-webkit-transform ' + time + 's linear'
+                    this.dateUl[i].style.transition = 'transform ' + time + 's ease-out'
+                    this.dateUl[i].style.webkitTransition = '-webkit-transform ' + time + 's ease-out'
                 }
             }
         },
@@ -617,9 +597,9 @@
                     this.moveY = event.touches[0].clientY
                     var offset  = this.startY - this.moveY // 向上为正数，向下为负数
                     this.moveTime = Date.now()
-                    this.curDis[i] = offset + this.curPos[i]
-                    if (this.curDis[i] <= -1.5 * this.liHeight) this.curDis[i] = -1.5 * this.liHeight
-                    if (this.curDis[i] >= (this.liNum[i] - 1 + 1.5) * this.liHeight) this.curDis[i] = (this.liNum[i] - 1 + 1.5) * this.liHeight
+                    this.curDis[i] = this.curPos[i] - offset
+                    if (this.curDis[i] >= 1.5 * this.liHeight) this.curDis[i] = 1.5 * this.liHeight
+                    if (this.curDis[i] <= -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight) this.curDis[i] = -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight
                     this.roll(i)
                     // 每运动 130 毫秒，记录一次速度
                     if (this.moveTime - this.startTime >= 130 * this.moveNumber) {
@@ -631,7 +611,7 @@
                     if (!this.abled) return
                     this.endTime = Date.now()
                     var speed = this.moveSpeed[this.moveSpeed.length - 1] || 0
-                    this.curDis[i] = this.curDis[i] + this.calculateBuffer(speed, this.a, this.f)
+                    this.curDis[i] = this.curDis[i] - this.calculateBuffer(speed, this.a)
                     this.fixate(i)
                     this.roll(i, 0.2)
                     for (var j = i; j < this.dateArr.length - 1; j++) {
@@ -646,23 +626,21 @@
          * Return : Number
          * Explain : @v 速度（正负表示运动方向, 单位 px/ms）
          * @a 加速度（正数, 单位 px/(ms * ms)）
-         * @f 阈值 滑动速度为多少时开始启用缓冲动画（正数, 单位 px/ms）
          */
-        calculateBuffer: function (v, a, f) {
-            var a = a || 0.001, f = f || 0.85
-            if (Math.abs(v) > f) return (v / Math.abs(v)) * (0.5 * v * v / a)
+        calculateBuffer: function (v, a) {
+            var a2 = a || 0.001;
+            if (Math.abs(v) > 0.25) return (v / Math.abs(v)) * (0.5 * v * v / a2)
             else return 0
         },
-         /**
+        /**
          * 确定 ul 最终的位置
          * Explain : @i 需要定位的列的索引
          */
         fixate: function(i) {
-            var liRow = Math.round((this.curDis[i] / this.liHeight).toFixed(2))
-            if (liRow > this.liNum[i] - 1) this.dateIndex[i] = this.liNum[i] - 1
-            else if (liRow < 0) this.dateIndex[i] = 0
-            else this.dateIndex[i] = liRow
-            this.curDis[i] = this.liHeight * this.dateIndex[i]
+            if (this.curDis[i] <= -1 * (this.liNum[i] - 1) * this.liHeight ) this.dateIndex[i] = this.liNum[i] - 1
+            else if (this.curDis[i] >= 0) this.dateIndex[i] = 0
+            else this.dateIndex[i] = -1 * Math.round(this.curDis[i] / this.liHeight)
+            this.curDis[i] = -1 * this.liHeight * this.dateIndex[i]
         },
         /**
          * 边界判断

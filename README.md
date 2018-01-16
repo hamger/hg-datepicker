@@ -1,7 +1,7 @@
 # hg-datepicker
-![build](https://img.shields.io/badge/build-passed-brightgreen.svg)
-![npm](https://img.shields.io/badge/npm-v0.2.7-blue.svg)
-![licence](https://img.shields.io/badge/licence-MIT-orange.svg)
+![build passed](https://img.shields.io/badge/build-passed-brightgreen.svg)
+![npm v0.2.7](https://img.shields.io/badge/npm-v0.2.9-blue.svg)
+![licence MIT](https://img.shields.io/badge/licence-MIT-orange.svg)
 ## Demo
 ![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
 
@@ -62,8 +62,7 @@ sureText | String | 确定按钮文本，默认为“确定”
 cancelText | String | 取消按钮文本，默认为“取消”
 hasSuffix | `yes` \| `no` | 是否添加时间单位，默认 `yes`
 hasZero | `yes` \| `no` | 一位数前是否加零，默认 `yes`
-f | Number | 惯性滚动阈值（正数, 单位 px/ms），默认 `0.85`
-a | Number | 惯性滚动加速度（正数, 单位 px/(ms * ms)），默认 `0.001`
+a | Number | 惯性滚动加速度（正数, 单位 px/(ms * ms)），规定滚动阻力，加速度越小缓冲距离越长，默认 `0.001`
 style | Obeject | 包含样式配置的对象
 
 `style`对象可以接受如下选项：
