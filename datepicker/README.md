@@ -1,6 +1,5 @@
 # hg-datepicker
 ![build passed](https://img.shields.io/badge/build-passed-brightgreen.svg)
-![npm v0.2.7](https://img.shields.io/badge/npm-v0.2.9-blue.svg)
 ![licence MIT](https://img.shields.io/badge/licence-MIT-orange.svg)
 ## Demo
 ![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
