@@ -615,7 +615,6 @@
                     } else {
                         var speed = this.moveSpeed[this.moveSpeed.length - 1]
                     }
-                    console.log(this.moveSpeed);
                     this.curDis[i] = this.curDis[i] - this.calculateBuffer(speed, this.a)
                     this.fixate(i)
                     this.roll(i, 0.2)
