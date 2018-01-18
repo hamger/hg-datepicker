@@ -32,14 +32,14 @@ import DatePicker from 'hg-datepicker';
 在`vue`中实例化插件
 ```js
 mounted () {
-	this.$nextTick(() => {
-		new DatePicker({
-	    inputId: 'date-input', // 目标DOM元素ID
-	    success: function(arr) { // 回调函数
-        console.log(arr);
-	    }
-		});
-	});
+    this.$nextTick(() => {
+        new DatePicker({
+            inputId: 'date-input', // 目标DOM元素ID
+            success: function(arr) { // 回调函数
+                console.log(arr);
+            }
+        });
+    });
 }
 ```
 ## 日期选择器配置项
