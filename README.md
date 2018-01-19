@@ -4,11 +4,11 @@
 ## Demo
 ![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
 
-[点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。 
+[点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。
 ## 下载插件
 * Github下载：[下载地址](https://github.com/hamger/hg-datepicker)
 * npm下载：`npm i hg-datepicker`
-## 快速使用 
+## 快速使用
 首先引入文件
 ```html
 <link rel="stylesheet" type="text/css" href="./picker.min.css" />
@@ -30,7 +30,7 @@ import 'hg-datepicker/picker.min.css';
 import DatePicker from 'hg-datepicker';
 ```
 在`vue`中实例化插件
-```js
+```
 mounted () {
     this.$nextTick(() => {
         new DatePicker({
