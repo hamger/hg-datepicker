@@ -51,9 +51,9 @@ inputId | String | 目标DOM元素ID，必填
 success | Funtion  |  确定后的回调函数，第一个参数为表示时间的数组，如[2002,2,2]表示2002年2月2号，必填
 cancel | Funtion  |  点击取消按钮或者背景后的回调函数，选填
 type | `time` \| `dateTime` \| `date` | 日期选择器的类型，`time`（分时），`dateTime`(年月日时分)，默认 `date`（年月日）
-start | Array<Number> | 开始时间的数组，默认四年前
-end | Array<Number> | 结束时间的数组，默认四年后
-firstTime | Array<Number> | 初始显示时间的数组，默认当前时间
+start | Array\<Number\> | 开始时间的数组，默认四年前
+end | Array\<Number\> | 结束时间的数组，默认四年后
+firstTime | Array\<Number\> | 初始显示时间的数组，默认当前时间
 title | String | 选择器标题，默认为空
 sureText | String | 确定按钮文本，默认为“确定”
 cancelText | String | 取消按钮文本，默认为“取消”
