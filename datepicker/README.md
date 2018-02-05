@@ -17,7 +17,7 @@
 实例化日期选择器`new DatePicker(option)`
 ```js
 new DatePicker({
-  inputId: 'date-input', // 目标DOM元素ID
+  inputId: 'date-input', // 触发选择的元素ID
   success: function(arr) { // 回调函数
     console.log(arr);
   }
@@ -34,8 +34,8 @@ import DatePicker from 'hg-datepicker';
 mounted () {
     this.$nextTick(() => {
         new DatePicker({
-            inputId: 'date-input', // 目标DOM元素ID
-            success: function(arr) { // 回调函数
+            inputId: 'date-input',
+            success: function(arr) {
                 console.log(arr);
             }
         });
