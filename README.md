@@ -1,6 +1,10 @@
 # hg-datepicker
 ![build passed](https://img.shields.io/badge/build-passed-brightgreen.svg)
 ![licence MIT](https://img.shields.io/badge/licence-MIT-orange.svg)
+
+## 简介
+使用原生 JavaScript 制作的移动端的日期选择器，附有 demo 和使用说明文档，支持多个配置项，已在多个线上项目中使用，可通过`npm install hg-datepicker`下载。
+
 ## Demo
 ![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
 
