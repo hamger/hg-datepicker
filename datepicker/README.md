@@ -64,7 +64,7 @@ cancelText | String | 取消按钮文本，默认为“取消”
 hasSuffix | `yes` \| `no` | 是否添加时间单位，默认 `yes`
 hasZero | `yes` \| `no` | 一位数前是否加零，默认 `yes`
 a | Number | 惯性滚动加速度（正数, 单位 px/(ms * ms)），规定滚动阻力，加速度越小缓冲距离越长，默认 `0.001`
-style | Obeject | 包含样式配置的对象
+style | Object | 包含样式配置的对象
 
 `style`对象可以接受如下选项：
 
