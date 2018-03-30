@@ -9,9 +9,11 @@
 ![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
 
 [点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。
+
 ## 下载插件
 * Github下载：[下载地址](https://github.com/hamger/hg-datepicker)
 * npm下载：`npm i hg-datepicker`
+
 ## 快速使用
 首先引入文件
 ```html
@@ -82,3 +84,22 @@ contentBgColor | String | 选择器选择区域的背景颜色
 upShadowColor | String | 选择器顶部朦层颜色
 downShadowColor | String | 选择器底部朦层颜色
 lineColor | String | 选择器分隔线颜色
+
+## Changelog
+### 2018.2.21
+> 0.2.10 * 添加日期选择器简介
+
+### 2018.1.17
+> v0.2.9 * 添加js和css压缩文件
+
+### 2018.1.16
+> v0.2.7 * 取消滑动阈值配置
+
+### 2018.1.15
+> v0.2.4 * 取消定位配置，采用底部上滑显示
+
+### 2018.1.14
+> v0.1.16 * 添加使用说明和API配置说明
+
+### 2018.1.3
+> v0.1.12 * 创建日期选择器
