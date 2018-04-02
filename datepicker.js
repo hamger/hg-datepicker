@@ -49,21 +49,15 @@
             if (config.start) {
                 if (config.start.length < 2) throw Error('配置项 start 不完整')
                 this.start = [undefined, undefined, undefined, config.start[0], config.start[1]]
-            } else {
-                this.start = [undefined, undefined, undefined, 0, 0]
-            }
+            } else this.start = [undefined, undefined, undefined, 0, 0]
             if (config.end) {
-                if (config.end.length < 2) throw Error('配置项 end 不完整');
+                if (config.end.length < 2) throw Error('配置项 end 不完整')
                 this.end = [undefined, undefined, undefined, config.end[0], config.end[1]]
-            } else {
-                this.end = [undefined, undefined, undefined, 23, 59]
-            }
+            } else this.end = [undefined, undefined, undefined, 23, 59]
             if (config.firstTime) {
                 if (config.firstTime.length < 2) throw Error('配置项 firstTime 不完整');
                 this.firstTime = [undefined, undefined, undefined, config.firstTime[0], config.firstTime[1]]
-            } else {
-                this.firstTime = [undefined, undefined, undefined, new Date().getHours(), new Date().getMinutes()]
-            }
+            } else this.firstTime = [undefined, undefined, undefined, new Date().getHours(), new Date().getMinutes()]
         } else if (this.type === 'dateTime'){
             this.start = config.start || [
                 new Date().getFullYear() - 4,
@@ -222,7 +216,7 @@
                 this.previousTime.push(this.firstTime[i])
             }
             for (var i = 0; i < this.firstTime.length; i++) {
-                if (this.firstTime[i]) {  
+                if (this.firstTime[i]) {
                     this.calculateArr(i)
                     this.calculateDis(i)
                     this.ulCount++
@@ -488,48 +482,47 @@
          * 设置选择器样式
          */
         setStyle: function() {
-            if (this.style) {
-                var obj = this.style
-                var container = $id(this.container)
-                var content = $id(this.content)
-                var box = $id(this.box)
-                var sureBtn = $id(this.sure)
-                var cancelBtn = $id(this.abolish)
-                var len = content.children.length
-                // 设置高宽
-                if (obj.liHeight !== 40) {
-                    for (var i = 0; i < this.ulCount; i++) {
-                        setChildStyle(content.children[i], 'height', this.liHeight + 'px')
-                    };
-                    content.children[len - 3].style.height = this.liHeight * 2 + 'px'
-                    content.children[len - 2].style.height = this.liHeight * 2 + 'px'
-                    content.children[len - 1].style.height = this.liHeight + 'px'
-                    content.children[len - 1].style.top = this.liHeight * 2 + 'px'
-                    content.style.height = this.liHeight * 5 + 'px'
-                    content.style.lineHeight = this.liHeight + 'px'
-                }
-                if (obj.btnHeight !== 44) {
-                    box.style.height = this.btnHeight + 'px'
-                    box.style.lineHeight = this.btnHeight + 'px'
-                }
-                if (obj.btnOffset) {
-                    sureBtn.style.marginRight = obj.btnOffset
-                    cancelBtn.style.marginLeft = obj.btnOffset
-                }
-                if (obj.liHeight !==  40 || obj.btnHeight !== 44) {
-                    container.style.height = this.liHeight * 5 + this.btnHeight + 'px'
-                }
-                // 设置配色
-                if(obj.titleColor) box.style.color = obj.titleColor
-                if(obj.sureColor) sureBtn.style.color = obj.sureColor
-                if(obj.cancelColor) cancelBtn.style.color = obj.cancelColor
-                if(obj.btnBgColor) box.style.backgroundColor = obj.btnBgColor
-                if(obj.contentColor) content.style.color = obj.contentColor
-                if(obj.contentBgColor) content.style.backgroundColor = obj.contentBgColor
-                if(obj.upShadowColor) content.children[len - 3].style.backgroundImage = obj.upShadowColor
-                if(obj.downShadowColor) content.children[len - 2].style.backgroundImage = obj.downShadowColor
-                if(obj.lineColor) content.children[len - 1].style.borderColor = obj.lineColor
-            }
+          if (!this.style) return
+          var obj = this.style
+          var container = $id(this.container)
+          var content = $id(this.content)
+          var box = $id(this.box)
+          var sureBtn = $id(this.sure)
+          var cancelBtn = $id(this.abolish)
+          var len = content.children.length
+          // 设置高宽
+          if (obj.liHeight !== 40) {
+            for (var i = 0; i < this.ulCount; i++) {
+              setChildStyle(content.children[i], 'height', this.liHeight + 'px')
+            };
+            content.children[len - 3].style.height = this.liHeight * 2 + 'px'
+            content.children[len - 2].style.height = this.liHeight * 2 + 'px'
+            content.children[len - 1].style.height = this.liHeight + 'px'
+            content.children[len - 1].style.top = this.liHeight * 2 + 'px'
+            content.style.height = this.liHeight * 5 + 'px'
+            content.style.lineHeight = this.liHeight + 'px'
+          }
+          if (obj.btnHeight !== 44) {
+            box.style.height = this.btnHeight + 'px'
+            box.style.lineHeight = this.btnHeight + 'px'
+          }
+          if (obj.btnOffset) {
+            sureBtn.style.marginRight = obj.btnOffset
+            cancelBtn.style.marginLeft = obj.btnOffset
+          }
+          if (obj.liHeight !==  40 || obj.btnHeight !== 44) {
+            container.style.height = this.liHeight * 5 + this.btnHeight + 'px'
+          }
+          // 设置配色
+          if(obj.titleColor) box.style.color = obj.titleColor
+          if(obj.sureColor) sureBtn.style.color = obj.sureColor
+          if(obj.cancelColor) cancelBtn.style.color = obj.cancelColor
+          if(obj.btnBgColor) box.style.backgroundColor = obj.btnBgColor
+          if(obj.contentColor) content.style.color = obj.contentColor
+          if(obj.contentBgColor) content.style.backgroundColor = obj.contentBgColor
+          if(obj.upShadowColor) content.children[len - 3].style.backgroundImage = obj.upShadowColor
+          if(obj.downShadowColor) content.children[len - 2].style.backgroundImage = obj.downShadowColor
+          if(obj.lineColor) content.children[len - 1].style.borderColor = obj.lineColor
         },
         /**
          * 渲染 ul 元素
@@ -599,7 +592,9 @@
                     this.moveTime = Date.now()
                     this.curDis[i] = this.curPos[i] - offset
                     if (this.curDis[i] >= 1.5 * this.liHeight) this.curDis[i] = 1.5 * this.liHeight
-                    if (this.curDis[i] <= -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight) this.curDis[i] = -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight
+                    if (this.curDis[i] <= -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight) {
+                      this.curDis[i] = -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight
+                    }
                     this.roll(i)
                     // 每运动 130 毫秒，记录一次速度
                     if (this.moveTime - this.startTime >= 130 * this.moveNumber) {
@@ -610,11 +605,8 @@
                 case "touchend":
                     if (!this.abled) return
                     this.endTime = Date.now()
-                    if (this.moveNumber === 1) {
-                        var speed =  (this.startY - event.changedTouches[0].clientY) / (this.endTime - this.startTime)
-                    } else {
-                        var speed = this.moveSpeed[this.moveSpeed.length - 1]
-                    }
+                    if (this.moveNumber === 1) var speed =  (this.startY - event.changedTouches[0].clientY) / (this.endTime - this.startTime)
+                    else var speed = this.moveSpeed[this.moveSpeed.length - 1]
                     this.curDis[i] = this.curDis[i] - this.calculateBuffer(speed, this.a)
                     this.fixate(i)
                     this.roll(i, 0.2)
@@ -688,9 +680,7 @@
          * Return : Number
          */
         addZero: function(num) {
-            if (this.hasZero === 'yes') {
-                if (num < 10) num = '0' + num
-            }
+            if (this.hasZero === 'yes' && num < 10) num = '0' + num
             return num
         },
         /**
