@@ -32,7 +32,7 @@ new DatePicker({
 
 如果你使用构建工具，可以这样引入
 ```js
-import 'hg-datepicker/picker.min.css';
+import 'hg-datepicker/dist/picker.min.css';
 import DatePicker from 'hg-datepicker';
 ```
 在`vue`中实例化插件
@@ -86,6 +86,9 @@ downShadowColor | String | 选择器底部朦层颜色
 lineColor | String | 选择器分隔线颜色
 
 ## Changelog
+### 2018.4.11
+> 1.0.0 * 修改项目文件结构
+
 ### 2018.2.21
 > 0.2.10 * 添加日期选择器简介
 
