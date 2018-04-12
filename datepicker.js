@@ -97,7 +97,7 @@
                 new Date().getDate()
             ];
         }
-        this.a = config.a // 惯性滚动加速度（正数, 单位 px/(ms * ms)），选填，默认 0.001
+        this.a = config.a || 0.001 // 惯性滚动加速度（正数, 单位 px/(ms * ms)），选填，默认 0.001
         this.style = config.style // 选择器样式, 选填
         this.hasSuffix = config.hasSuffix || 'yes' // 是否添加时间单位，选填
         this.hasZero = config.hasZero || 'yes' // 一位数是否显示两位，选填
@@ -624,9 +624,8 @@
          * @a 加速度（正数, 单位 px/(ms * ms)）
          */
         calculateBuffer: function (v, a) {
-            var a2 = a || 0.001;
-            if (Math.abs(v) > 0.25) return (v / Math.abs(v)) * (0.5 * v * v / a2)
-            else return 0
+            if (Math.abs(v) < 0.25) return 0
+            else return (v / Math.abs(v)) * (0.5 * v * v / a)
         },
         /**
          * 确定 ul 最终的位置
