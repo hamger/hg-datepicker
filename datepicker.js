@@ -36,6 +36,11 @@
     }
 
     /**
+     * 空函数
+     */
+    function noop () {}
+    
+    /**
      * 创建构造函数
      */
     function DatePicker(config) {
@@ -103,6 +108,7 @@
         this.hasZero = config.hasZero || 'yes' // 一位数是否显示两位，选填
         this.success = config.success // 成功的回调函数，必填
         this.cancel = config.cancel || null // 取消按钮回调函数，选填
+        this.beforeShow = config.beforeShow || function () {} // 规定呼起选择器前的逻辑，选填
         this.check() // 检查配置项是否合法
         this.initTab() // 初始化标签
         this.initUI() // 初始化UI
@@ -240,7 +246,7 @@
 
             // 点击目标元素显示选择器
             $id(that.inputId).addEventListener('click', function() {
-                that.show(wrap, container)
+                if(!that.beforeShow()) that.show(wrap, container)
             })
 
             // 点击保存按钮隐藏选择器并输出结果

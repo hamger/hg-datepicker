@@ -106,6 +106,10 @@
         cancel: function () {
             console.log('取消日期选择');
         },
+        beforeShow: function () {
+            console.log('beforeSuccess回调触发了')  
+            return false
+        },
         success: function(arr) { // 回调函数
             console.log(arr);
             document.getElementById('date-input').innerHTML = arr;
