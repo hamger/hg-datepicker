@@ -103,13 +103,13 @@
         //     // downShadow: 'linear-gradient(to top, rgb(14, 140, 14), rgba(14, 140, 14, 0))',
         // },
         title: '日期选择',
+        initialOption: [2018, 7 ,7],
         cancel: function () {
             console.log('取消日期选择');
         },
-        beforeShow: function () {
-            console.log('beforeSuccess回调触发了')  
-            return false
-        },
+        // beforeShow: function () {
+        //     console.log('beforeSuccess回调触发了')  
+        // },
         success: function(arr) { // 回调函数
             console.log(arr);
             document.getElementById('date-input').innerHTML = arr;

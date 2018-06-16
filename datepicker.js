@@ -59,10 +59,10 @@
                 if (config.end.length < 2) throw Error('配置项 end 不完整')
                 this.end = [undefined, undefined, undefined, config.end[0], config.end[1]]
             } else this.end = [undefined, undefined, undefined, 23, 59]
-            if (config.firstTime) {
-                if (config.firstTime.length < 2) throw Error('配置项 firstTime 不完整');
-                this.firstTime = [undefined, undefined, undefined, config.firstTime[0], config.firstTime[1]]
-            } else this.firstTime = [undefined, undefined, undefined, new Date().getHours(), new Date().getMinutes()]
+            if (config.initialOption) {
+                if (config.initialOption.length < 2) throw Error('配置项 initialOption 不完整');
+                this.initialOption = [undefined, undefined, undefined, config.initialOption[0], config.initialOption[1]]
+            } else this.initialOption = [undefined, undefined, undefined, new Date().getHours(), new Date().getMinutes()]
         } else if (this.type === 'dateTime'){
             this.start = config.start || [
                 new Date().getFullYear() - 4,
@@ -78,7 +78,7 @@
                 new Date().getHours(),
                 new Date().getMinutes()
             ];
-            this.firstTime = config.firstTime || [
+            this.initialOption = config.initialOption || [
                 new Date().getFullYear(),
                 new Date().getMonth() + 1,
                 new Date().getDate(),
@@ -96,7 +96,7 @@
                 new Date().getMonth() + 1,
                 new Date().getDate()
             ];
-            this.firstTime = config.firstTime || [
+            this.initialOption = config.initialOption || [
                 new Date().getFullYear(),
                 new Date().getMonth() + 1,
                 new Date().getDate()
@@ -108,7 +108,7 @@
         this.hasZero = config.hasZero || 'yes' // 一位数是否显示两位，选填
         this.success = config.success // 成功的回调函数，必填
         this.cancel = config.cancel || null // 取消按钮回调函数，选填
-        this.beforeShow = config.beforeShow || function () {} // 规定呼起选择器前的逻辑，选填
+        this.beforeShow = config.beforeShow || null // 规定呼起选择器前的逻辑，选填
         this.check() // 检查配置项是否合法
         this.initTab() // 初始化标签
         this.initUI() // 初始化UI
@@ -139,18 +139,18 @@
             if (this.type !== 'time' && this.type !== 'dateTime' && this.type !== 'date') throw Error('配置项 type 不合法.')
             if (!isNumberArr(this.start)) throw Error('配置项 start 不合法')
             if (!isNumberArr(this.end)) throw Error('配置项 end 不合法')
-            if (!isNumberArr(this.firstTime)) throw Error('配置项 firstTime 不合法')
+            if (!isNumberArr(this.initialOption)) throw Error('配置项 initialOption 不合法')
             switch (this.type) {
                 case 'date':
                     if(this.start.length < 3) throw Error('配置项 start 不完整')
                     if(this.end.length < 3) throw Error('配置项 end 不完整')
-                    if(this.firstTime.length < 3) throw Error('配置项 firstTime 不完整')
+                    if(this.initialOption.length < 3) throw Error('配置项 initialOption 不完整')
                     var start = new Date(this.start[0], this.start[1] - 1, this.start[2]).getTime()
                     var end = new Date(this.end[0], this.end[1] - 1, this.end[2]).getTime()
-                    var first = new Date(this.firstTime[0], this.firstTime[1], this.firstTime[2]).getTime()
+                    var first = new Date(this.initialOption[0], this.initialOption[1], this.initialOption[2]).getTime()
                     if (start > end) throw Error('开始时间不能大于结束时间.')
-                    if (first > end) this.firstTime = this.end
-                    if (first < start) this.firstTime = this.start
+                    if (first > end) this.initialOption = this.end
+                    if (first < start) this.initialOption = this.start
                     break
                 case 'time':
                     function tf(i) { return (i < 10 ? '0' : '') + i }
@@ -158,22 +158,22 @@
                     var start = parseInt(startStr)
                     var endStr = this.end[3] + tf(this.end[4])
                     var end = parseInt(endStr)
-                    var firstStr = this.firstTime[3] + tf(this.firstTime[4])
+                    var firstStr = this.initialOption[3] + tf(this.initialOption[4])
                     var first = parseInt(firstStr)
                     if (start > end) throw Error('开始时间不能大于结束时间.')
-                    if (first > end) this.firstTime = this.end
-                    if (first < start) this.firstTime = this.start
+                    if (first > end) this.initialOption = this.end
+                    if (first < start) this.initialOption = this.start
                     break
                 case 'dateTime':
                     if(this.start.length < 5) throw Error('配置项 start 不完整')
                     if(this.end.length < 5) throw Error('配置项 end 不完整')
-                    if(this.firstTime.length < 5) throw Error('配置项 firstTime 不完整')
+                    if(this.initialOption.length < 5) throw Error('配置项 initialOption 不完整')
                     var start = new Date(this.start[0], this.start[1]- 1, this.start[2], this.start[3], this.start[4]).getTime()
                     var end = new Date(this.end[0], this.end[1] - 1, this.end[2], this.end[3], this.end[4]).getTime()
-                    var first = new Date(this.firstTime[0], this.firstTime[1] - 1, this.firstTime[2], this.firstTime[3], this.firstTime[4]).getTime()
+                    var first = new Date(this.initialOption[0], this.initialOption[1] - 1, this.initialOption[2], this.initialOption[3], this.initialOption[4]).getTime()
                     if (start > end) throw Error('开始时间不能大于结束时间.')
-                    if (first > end) this.firstTime = this.end
-                    if (first < start) this.firstTime = this.start
+                    if (first > end) this.initialOption = this.end
+                    if (first < start) this.initialOption = this.start
                     break
             }
         },
@@ -213,16 +213,17 @@
             this.content = this.wrapId + '-content' // 选择器选择区域ID
             this.abolish = this.wrapId + '-abolish' // 选择器取消按钮ID
             this.sure = this.wrapId + '-sure' // 选择器确定按钮ID
+            this.isSelect = true // 是否呼起选择框
         },
         /**
          * 定义初始化 UI 函数
          */
         initUI: function() {
-            for (var i = 0; i < this.firstTime.length; i++) {
-                this.previousTime.push(this.firstTime[i])
+            for (var i = 0; i < this.initialOption.length; i++) {
+                this.previousTime.push(this.initialOption[i])
             }
-            for (var i = 0; i < this.firstTime.length; i++) {
-                if (this.firstTime[i]) {
+            for (var i = 0; i < this.initialOption.length; i++) {
+                if (this.initialOption[i]) {
                     this.calculateArr(i)
                     this.calculateDis(i)
                     this.ulCount++
@@ -246,7 +247,8 @@
 
             // 点击目标元素显示选择器
             $id(that.inputId).addEventListener('click', function() {
-                if(!that.beforeShow()) that.show(wrap, container)
+                that.beforeShow && that.beforeShow()
+                if(that.isSelect) that.show(wrap, container)
             })
 
             // 点击保存按钮隐藏选择器并输出结果
@@ -364,7 +366,7 @@
         curDate: function(i) {
             var curDate = 0
             // this.dateArr 还没有被赋值的情况
-            if (this.dateArr.length === 0) curDate = this.firstTime[i]
+            if (this.dateArr.length === 0) curDate = this.initialOption[i]
             else {
                 if (this.dateArr[i] === undefined) curDate = undefined
                 else curDate = this.dateArr[i][this.dateIndex[i]]
@@ -705,7 +707,13 @@
         hide: function(wrap, container) {
             wrap.classList.remove('hg-picker-bg-show')
             container.classList.remove('hg-picker-container-up')
-        }
+        },
+        /**
+         * 是否禁止呼起选择框
+         */
+        forbidSelect: function(status) {
+            this.isSelect = !status
+        },
     }
 
     return DatePicker
