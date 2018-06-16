@@ -94,7 +94,10 @@ function | param | description
 datePicker.forbidSelect(status) | status: `true`/`false` | 是否禁用选择框，`true`表示禁用，`false`表示不禁用，禁用状态下 beforeShow 回调依然会执行
 
 ## Changelog
-> v1.2.0 * 添加实例方法 forbidSelect ，配置项 firstTime 更名为 initialOption ，修复选择器隐藏时依然触发 cancel 回调的问题
+### 2018.6.16
+> v1.2.1 * 修复选择器隐藏时依然触发 cancel 回调的问题
+
+> v1.2.0 * 添加实例方法 forbidSelect ，配置项 firstTime 更名为 initialOption
 
 ### 2018.6.15
 > v1.1.0 * 添加 boforeShow 配置项
