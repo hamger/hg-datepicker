@@ -443,39 +443,35 @@
          */
         renderpicker: function() {
             var len = this.dateArr.length
+
+            var btnHTML = '<div class="hg-picker-btn-box" id="' + this.box + '">' + this.title +
+                '<div class="hg-picker-btn" id="' + this.abolish + '">' + this.cancelText + '</div>' +
+                '<div class="hg-picker-btn" id="' + this.sure + '">' + this.sureText + '</div>' +
+                '</div>'
+
+            let str = ''
+            for (var i = 0; i < len; i++) {
+                if (this.dateArr[i] !== undefined) str += this.renderUl(i)
+            }
+
+            var contentHtml = '<div class="hg-picker-content" id="' + this.content + '">' + 
+                str + 
+                '<div class="hg-picker-up-shadow"></div>' +
+                '<div class="hg-picker-down-shadow"></div>' +
+                '<div class="hg-picker-line"></div>' +
+                '</div>'
+
+            // 设置按钮位置
             if (this.style && this.style.btnLocation === 'bottom') {
                 var html = '<div  class="hg-picker-container" id="' + this.container + '">' +
-                    '<div class="hg-picker-content" id="' + this.content + '">'
-                for (var i = 0; i < len; i++) {
-                    if (this.dateArr[i] !== undefined) html += this.renderUl(i)
-                }
-                html += '<div class="hg-picker-up-shadow"></div>' +
-                    '<div class="hg-picker-down-shadow"></div>' +
-                    '<div class="hg-picker-line"></div>' +
-                    '</div>' +
-                    '<div class="hg-picker-btn-box" id="' + this.box + '">' +
-                    this.title +
-                    '<div class="hg-picker-btn" id="' + this.abolish + '">' + this.cancelText + '</div>' +
-                    '<div class="hg-picker-btn" id="' + this.sure + '">' + this.sureText + '</div>' +
-                    '</div>' +
+                    contentHtml + btnHTML +
                     '</div>'
             } else {
                 var html = '<div  class="hg-picker-container" id="' + this.container + '">' +
-                    '<div class="hg-picker-btn-box" id="' + this.box + '">' +
-                    this.title +
-                    '<div class="hg-picker-btn" id="' + this.abolish + '">' + this.cancelText + '</div>' +
-                    '<div class="hg-picker-btn" id="' + this.sure + '">' + this.sureText + '</div>' +
-                    '</div>' +
-                    '<div class="hg-picker-content" id="' + this.content + '">'
-                for (var i = 0; i < len; i++) {
-                    if (this.dateArr[i] !== undefined) html += this.renderUl(i)
-                }
-                html += '<div class="hg-picker-up-shadow"></div>' +
-                    '<div class="hg-picker-down-shadow"></div>' +
-                    '<div class="hg-picker-line"></div>' +
-                    '</div>' +
+                    btnHTML + contentHtml +
                     '</div>'
             }
+
             this.wrap.innerHTML = html
             for (var i = 0; i < len; i++) {
                 if (this.dateArr[i] !== undefined) {
