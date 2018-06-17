@@ -1,6 +1,6 @@
 {
   "name": "hg-datepicker",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
   "description": "Hanger‘s datepicker",
   "keywords": [
@@ -16,5 +16,5 @@
     "type": "git",
     "url": "https://github.com/hamger/hg-datepicker.git"
   },
-  "main": "dist/datepicker.min.js"
+  "main": "datepicker.js"
 }

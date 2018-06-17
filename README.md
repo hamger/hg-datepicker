@@ -17,8 +17,8 @@
 ## 快速使用
 首先引入文件
 ```html
-<link rel="stylesheet" type="text/css" href="./picker.min.css" />
-<script src="./datepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./picker.css" />
+<script src="./datepicker.js"></script>
 ```
 实例化日期选择器`new DatePicker(configuration)`
 ```js
@@ -32,7 +32,7 @@ var datePicker = new DatePicker({
 
 如果你使用构建工具，可以这样引入
 ```js
-import 'hg-datepicker/dist/picker.min.css';
+import 'hg-datepicker/picker.css';
 import DatePicker from 'hg-datepicker';
 ```
 在`vue`中实例化插件
@@ -94,6 +94,9 @@ function | param | description
 datePicker.forbidSelect(status) | status: `true`/`false` | 是否禁用选择框，`true`表示禁用，`false`表示不禁用，禁用状态下 beforeShow 回调依然会执行
 
 ## Changelog
+### 2018.6.17
+> v1.2.2 * 删除压缩文件
+
 ### 2018.6.16
 > v1.2.1 * 修复选择器隐藏时依然触发 cancel 回调的问题
 
