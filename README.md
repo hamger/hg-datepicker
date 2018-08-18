@@ -2,19 +2,18 @@
 ![build passed](https://img.shields.io/badge/build-passed-brightgreen.svg)
 ![licence MIT](https://img.shields.io/badge/licence-MIT-orange.svg)
 
-## 简介
-使用原生 JavaScript 制作的移动端的日期选择器，附有 demo 和使用说明文档，支持多个配置项，已在多个线上项目中使用，可通过`npm install hg-datepicker`下载。
+移动端的日期选择器，支持三种类型的日期选择。
 
 ## Demo
 ![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
 
 [点击这里可跳转到演示页面](https://hamger.github.io/demo/datepicker/datepicker.html)，请在移动端打开或者使用浏览器移动端调试工具打开。
 
-## 下载插件
+## Install
+* npm下载：`npm install hg-datepicker`
 * Github下载：[下载地址](https://github.com/hamger/hg-datepicker)
-* npm下载：`npm i hg-datepicker`
 
-## 快速使用
+## Usage
 首先引入文件
 ```html
 <link rel="stylesheet" type="text/css" href="./picker.css" />
@@ -50,7 +49,7 @@ mounted () {
     });
 }
 ```
-## 日期选择器配置项
+## 配置项
 `configuration`是一个配置项的对象，可以接受如下选项：
 
 key | value | description
@@ -94,6 +93,9 @@ function | param | description
 datePicker.forbidSelect(status) | status: `true`/`false` | 是否禁用选择框，`true`表示禁用，`false`表示不禁用，禁用状态下 beforeShow 回调依然会执行
 
 ## Changelog
+### 2018.8.18
+> v1.2.3 * 修改 readme 内容
+
 ### 2018.6.17
 > v1.2.2 * 删除压缩文件
 
