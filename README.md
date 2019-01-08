@@ -5,8 +5,6 @@
 移动端的日期选择器，支持三种类型的日期选择。
 
 ## Demo
-![hg-citypicker png](http://olislpb6q.bkt.clouddn.com/hg-datepicker.png)
-
 [点击这里可跳转到演示页面](https://hamger.github.io/hg-datepicker/)，请在移动端打开或者使用浏览器移动端调试工具打开。
 
 ## Install
