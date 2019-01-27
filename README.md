@@ -5,7 +5,7 @@
 移动端的日期选择器，支持三种类型的日期选择。
 
 ## Demo
-[点击这里可跳转到演示页面](https://hamger.github.io/hg-datepicker/)，请在移动端打开或者使用浏览器移动端调试工具打开。
+[点击这里跳转到演示页面](https://hamger.github.io/hg-datepicker/)，请在移动端打开或者使用浏览器移动端调试工具打开。
 
 ## Install
 * npm下载：`npm install hg-datepicker`
