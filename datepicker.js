@@ -449,7 +449,7 @@
                 '<div class="hg-picker-btn" id="' + this.sure + '">' + this.sureText + '</div>' +
                 '</div>'
 
-            let str = ''
+            var str = ''
             for (var i = 0; i < len; i++) {
                 if (this.dateArr[i] !== undefined) str += this.renderUl(i)
             }
