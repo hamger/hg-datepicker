@@ -3,6 +3,9 @@
   "version": "1.3.0",
   "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
   "description": "Hanger‘s datepicker",
+  "scripts": {
+    "tonpm": "npm version patch && npm publish"
+  },
   "keywords": [
     "hanger",
     "datepicker"
