@@ -203,7 +203,7 @@
           ).getTime();
           var first = new Date(
             this.initialOption[0],
-            this.initialOption[1],
+            this.initialOption[1] - 1,
             this.initialOption[2]
           ).getTime();
           if (start > end) throw Error("开始时间不能大于结束时间.");

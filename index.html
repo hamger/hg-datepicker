@@ -61,6 +61,8 @@
     <article class="wraper">
         <h3 class="title">datePicker</h3>
         <div class="inputDiv" id="date-input"/>选择年月日</div>
+        <h3 class="title">datePicker2</h3>
+        <div class="inputDiv" id="start_date"/>选择年月日</div>
     </article>
     <article class="wraper">
         <h3 class="title">timeSelector</h3>
@@ -152,6 +154,17 @@
         picker.setTitle(number + '号选择器')
         picker.show()
     }
+
+    new DatePicker({ 
+        inputId: 'start_date', 
+        type: 'date', 
+        start: [2017, 1, 1], 
+        end: [2018, 9, 17], 
+        initialOption: [2018, 9, 10], 
+        success: function(arr) { 
+            console.log(arr)
+        } 
+    });
     </script>
 </body>
 

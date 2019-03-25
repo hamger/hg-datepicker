@@ -113,6 +113,8 @@ mounted () {
 
 ### 2019.3.25
 
+> v1.3.1 修复 initialOption 配置失效
+
 > v1.3.0 支持 inputId 不填，添加实例方法 show 、 hide 和 setTitle
 
 ### 2018.8.18
