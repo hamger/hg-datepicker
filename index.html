@@ -67,8 +67,12 @@
         <div class="inputDiv" id="date-input2"/>选择时分</div>
     </article>
     <article class="wraper">
-        <h3 class="title">dateTimeSelector</h3>
-        <div class="inputDiv" id="date-input3"/>选择年月日时分</div>
+        <h3 class="title">dateTimeSelector3</h3>
+        <div onclick="select(3)" class="inputDiv" id="date-input3"/>选择年月日时分</div>
+    </article>
+    <article class="wraper">
+        <h3 class="title">dateTimeSelector4</h3>
+        <div onclick="select(4)" class="inputDiv" id="date-input4"/>选择年月日时分</div>
     </article>
     <script src="./datepicker.js"></script>
     <script>
@@ -127,8 +131,8 @@
             document.getElementById('date-input2').innerHTML = arr;
         }
     });
-    new DatePicker({
-        inputId: 'date-input3',
+
+    var picker = new DatePicker({
         type: 'dateTime',
         style: {
             btnHeight: 44
@@ -139,9 +143,15 @@
         hasZero: 'no', // 单位数不显两位
         success: function(arr) {
             console.log(arr);
-            document.getElementById('date-input3').innerHTML = arr;
+            document.getElementById('date-input' + this.pickerNumber).innerHTML = arr;
         }
     });
+
+    function select (number) {
+        picker.pickerNumber = number
+        picker.setTitle(number + '号选择器')
+        picker.show()
+    }
     </script>
 </body>
 
