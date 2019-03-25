@@ -338,7 +338,7 @@
       }
       // 点击保存按钮隐藏选择器并输出结果
       $id(that.sureId).addEventListener("click", function() {
-        that.success(that.result(that.previousTime));
+        that.success(that.result());
         that.hide();
       });
 
@@ -872,12 +872,12 @@
      * 返回最终结果的数组
      * Return : Array
      */
-    result: function(arr) {
-      var arr2 = [];
+    result: function() {
+      var arr = [];
       for (var i = 0; i < this.dateArr.length; i++) {
-        if (this.dateArr[i]) arr2.push(arr[i]);
+        if (this.dateArr[i]) arr.push(this.dateArr[i][this.dateIndex[i]]);
       }
-      return arr2;
+      return arr;
     },
     /**
      * 加零，一位数显示为两位
