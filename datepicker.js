@@ -297,7 +297,7 @@
       this.abolishId = this.wrapId + "-abolish"; // 选择器取消按钮ID
       this.sureId = this.wrapId + "-sure"; // 选择器确定按钮ID
       this.titleId = this.wrapId + "-title"; // 选择器确定按钮ID
-      this.isSelect = true; // 是否呼起选择框
+      this.isCanSelect = true; // 是否呼起选择框
     },
     /**
      * 定义初始化 UI 函数
@@ -333,7 +333,7 @@
       if (that.inputId) {
         $id(that.inputId).addEventListener("click", function() {
           that.beforeShow && that.beforeShow();
-          if (that.isSelect) that.show();
+          that.show();
         });
       }
       // 点击保存按钮隐藏选择器并输出结果
@@ -892,6 +892,7 @@
      * 显示选择器
      */
     show: function() {
+      if (this.isCanSelect) return
       this.wrap.classList.add("hg-picker-bg-show");
       this.container.classList.add("hg-picker-container-up");
     },
@@ -906,7 +907,7 @@
      * 是否禁止呼起选择框
      */
     forbidSelect: function(status) {
-      this.isSelect = !status;
+      this.isCanSelect = !status;
     },
     /**
      * 设置选择器标题
