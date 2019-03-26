@@ -113,7 +113,7 @@ mounted () {
 
 ### 2019.3.26
 
-> v1.3.3 show 受 forbidSelect 限制
+> v1.3.4 show 受 forbidSelect 限制
 
 ### 2019.3.25
 

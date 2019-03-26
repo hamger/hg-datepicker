@@ -892,7 +892,7 @@
      * 显示选择器
      */
     show: function() {
-      if (this.isCanSelect) return
+      if (!this.isCanSelect) return;
       this.wrap.classList.add("hg-picker-bg-show");
       this.container.classList.add("hg-picker-container-up");
     },
