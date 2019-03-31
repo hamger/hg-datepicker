@@ -11,8 +11,8 @@
 
 ## Install
 
-- npm 下载：`npm install hg-datepicker`
-- Github 下载：[下载地址](https://github.com/hamger/hg-datepicker)
+- yarn 下载：`yarn add hg-datepicker`
+- npm 下载：`npm install --save hg-datepicker`
 
 ## Usage
 
