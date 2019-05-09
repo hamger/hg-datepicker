@@ -10,10 +10,14 @@ var pass = new Date(now.getTime() - 86400 * 1000 * 5000)
 var a4 = pass.getFullYear()
 var a5 = pass.getMonth() + 1
 var a6 = pass.getDate()
-new DatePicker({
+var picker = new DatePicker({
   inputId: 'date-input', // 目标DOM元素ID
-  // start: [a4,a5,a6], // 开始时间
-  // end: [a1,a2,a3], // 结束时间
+  title: '日期选择',
+  start: [a4, a5, a6], // 开始时间
+  end: [a1, a2, a3], // 结束时间
+  // start: [2017, 1, 1],
+  // end: [2018, 9, 17],
+  // initialOption: [2018, 9, 10],
   // style: {
   //     btnLocation: 'bottom',
   //     liHeight: 45,
@@ -29,8 +33,6 @@ new DatePicker({
   //     // upShadow: 'linear-gradient(to bottom, rgb(14, 140, 14), rgba(14, 140, 14, 0))',
   //     // downShadow: 'linear-gradient(to top, rgb(14, 140, 14), rgba(14, 140, 14, 0))',
   // },
-  title: '日期选择',
-  initialOption: [2018, 3, 31],
   cancel: function () {
     console.log('取消日期选择');
   },
@@ -42,7 +44,7 @@ new DatePicker({
     document.getElementById('date-input').innerHTML = arr;
   }
 });
-new DatePicker({
+var picker2 = new DatePicker({
   inputId: 'date-input2',
   type: 'time', // 选择器类型
   start: [2, 30], // 开始时间
@@ -55,7 +57,7 @@ new DatePicker({
     document.getElementById('date-input2').innerHTML = arr;
   }
 });
-var picker = new DatePicker({
+var picker3 = new DatePicker({
   type: 'dateTime',
   style: {
     btnHeight: 44
@@ -66,22 +68,24 @@ var picker = new DatePicker({
   hasZero: 'no', // 单位数不显两位
   success: function (arr) {
     console.log(arr);
-    document.getElementById('date-input' + this.pickerNumber).innerHTML = arr;
+    document.getElementById('date-input3').innerHTML = arr;
   }
 });
- 
+
 window.select = function select(number) {
   picker.pickerNumber = number
   picker.setTitle(number + '号选择器')
   picker.show()
 }
-new DatePicker({
-  inputId: 'start_date',
-  type: 'date',
-  start: [2017, 1, 1],
-  end: [2018, 9, 17],
-  initialOption: [2018, 9, 10],
-  success: function (arr) {
-    console.log(arr)
-  }
-});
+
+window.select2 = function select(number) {
+  picker2.pickerNumber = number
+  picker2.setTitle(number + '号选择器')
+  picker2.show()
+}
+
+window.select3 = function select(number) {
+  picker3.pickerNumber = number
+  picker3.setTitle(number + '号选择器')
+  picker3.show()
+}
