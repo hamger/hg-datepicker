@@ -1,0 +1,17 @@
+{
+  "extends": ["prettier"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "prefer-destructuring": "off",
+    "no-bitwise": "off",
+    "no-console": "off",
+    "no-plusplus": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/first": "off",
+    "import/no-extraneous-dependencies": "off"
+  }
+}

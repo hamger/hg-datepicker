@@ -14,15 +14,12 @@
         padding: 0;
         margin: 0;
     }
-
     body {
         background-color: #fff;
     }
-
     .wraper {
         margin-bottom: 15px;
     }
-
     .title {
         position: relative;
         width: 100%;
@@ -31,7 +28,6 @@
         text-align: center;
         color: #000;
     }
-
     .title:after {
         content: '';
         position: absolute;
@@ -43,7 +39,6 @@
         background: #bbb;
         border-radius: 10px;
     }
-
     .inputDiv {
         color: #333;
         width: 200px;
@@ -82,12 +77,10 @@
     var a1 = now.getFullYear()
     var a2 = now.getMonth() + 1
     var a3 = now.getDate()
-
     var pass = new Date(now.getTime() - 86400 * 1000 * 5000)
     var a4 = pass.getFullYear()
     var a5 = pass.getMonth() + 1
     var a6 = pass.getDate()
-
     new DatePicker({
         inputId: 'date-input', // 目标DOM元素ID
         // start: [a4,a5,a6], // 开始时间
@@ -133,7 +126,6 @@
             document.getElementById('date-input2').innerHTML = arr;
         }
     });
-
     var picker = new DatePicker({
         type: 'dateTime',
         style: {
@@ -148,13 +140,11 @@
             document.getElementById('date-input' + this.pickerNumber).innerHTML = arr;
         }
     });
-
     function select (number) {
         picker.pickerNumber = number
         picker.setTitle(number + '号选择器')
         picker.show()
     }
-
     new DatePicker({ 
         inputId: 'start_date', 
         type: 'date', 
