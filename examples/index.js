@@ -1,5 +1,5 @@
-import ParaPicker from '@';
-// import ParaPicker from '../dist/hg-datepicker.js';
+import DatePicker from '@';
+// import DatePicker from '../dist/hg-datepicker.js';
 import '../picker.css';
 
 var now = new Date()

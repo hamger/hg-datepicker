@@ -22,7 +22,9 @@ export function $id(id) {
  * 设置子元素样式
  */
 export function setChildStyle(parent, key, val) {
-  const { children } = parent;
+  const {
+    children
+  } = parent;
   for (let i = 0; i < children.length; i++) {
     children[i].style[key] = val;
   }
@@ -37,4 +39,16 @@ export function setChildStyle(parent, key, val) {
 export function calculateBuffer(v, a) {
   if (Math.abs(v) < 0.25) return 0;
   return (v / Math.abs(v)) * ((0.5 * v * v) / a);
+}
+
+/**
+ * 获取从 start 到 end 的数组
+ * Return : Array
+ */
+export function getArr(start, end) {
+  var arr = [];
+  for (var i = start; i <= end; i++) {
+    arr.push(i);
+  }
+  return arr;
 }

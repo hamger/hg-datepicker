@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
     output: {
       filename: 'hg-datepicker.js',
       path: path.resolve(__dirname, 'dist'),
-      library: 'ParaPicker',
+      library: 'DatePicker',
       libraryTarget: 'umd',
       libraryExport: 'default',
     },
@@ -58,7 +58,7 @@ module.exports = (env, argv) => {
       hot: true,
       compress: true,
       stats: 'errors-only',
-      port: 8123,
+      port: 8121,
     };
 
     config.plugins = config.plugins.concat([

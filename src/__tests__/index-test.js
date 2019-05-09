@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import ParaPicker from '../index';
+import DatePicker from '../index';
 
 const data = [
   [
@@ -13,7 +13,7 @@ const data = [
   ['存活', '死亡', '吃刀', '票出', '吃毒', '中枪'],
 ];
 
-const picker = new ParaPicker({
+const picker = new DatePicker({
   data,
   title: '玩家属性',
   style: {
@@ -39,7 +39,7 @@ const picker = new ParaPicker({
     document.getElementById(`para-input${this.playerNumber}`).innerHTML = arr;
   },
 });
-const picker2 = new ParaPicker({
+const picker2 = new DatePicker({
   data,
   success(arr) {
     console.log(arr);

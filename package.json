@@ -2,7 +2,7 @@
   "name": "hg-datepicker",
   "version": "2.0.0",
   "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
-  "description": "a picker for time in the mobile terminal",
+  "description": "a datepicker in the mobile terminal",
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production",
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "hanger",
-    "parapicker"
+    "datepicker"
   ],
   "homepage": "https://github.com/hamger/hg-datepicker",
   "bugs": {
