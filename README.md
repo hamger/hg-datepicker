@@ -29,9 +29,9 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="https://unpkg.com/hg-parapicker/picker.css"
+  href="https://unpkg.com/hg-datepicker/picker.css"
 />
-<script src="https://unpkg.com/hg-parapicker/dist/hg-parapicker.js"></script>
+<script src="https://unpkg.com/hg-datepicker/dist/hg-datepicker.js"></script>
 ```
 
 实例化日期选择器`new DatePicker(configuration)`
