@@ -108,4 +108,4 @@ import DatePicker from "hg-datepicker";
 
 ### 2019.5.10
 
-> v2.0.0 使用 ES6 重构项目
+> v2.0.0 使用 ES6 重构项目 & 添加实例方法 set、get 
