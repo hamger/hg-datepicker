@@ -91,7 +91,7 @@
             },
             onOk: function (arr) { // 回调函数
                 console.log(arr);
-                document.getElementById('date-input' + this.get('playerNumber')).innerHTML = arr
+                document.getElementById('date-input' + this.get('pickerNumber')).innerHTML = arr
             }
         });
         var picker2 = new DatePicker({
@@ -124,7 +124,7 @@
 
         window.select = function select(number) {
             picker.set({
-                playerNumber: number,
+                pickerNumber: number,
                 title: `${number}号选择器`
             })
             picker.show()

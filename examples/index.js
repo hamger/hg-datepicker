@@ -34,12 +34,9 @@ var picker = new DatePicker({
   cancel: function () {
     console.log('取消日期选择')
   },
-  // beforeShow: function () {
-  //     console.log('beforeonOk回调触发了')
-  // },
   onOk: function (arr) { // 回调函数
     console.log(arr)
-    document.getElementById('date-input' + this.get('playerNumber')).innerHTML = arr
+    document.getElementById('date-input' + this.get('pickerNumber')).innerHTML = arr
   }
 })
 var picker2 = new DatePicker({
@@ -72,7 +69,7 @@ var picker3 = new DatePicker({
 
 window.select = function select (number) {
   picker.set({
-    playerNumber: number,
+    pickerNumber: number,
     title: `${number}号选择器`
   })
   picker.show()

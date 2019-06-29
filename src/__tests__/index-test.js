@@ -36,14 +36,14 @@ const picker = new DatePicker({
   },
   onOk (arr) {
     console.log(arr)
-    document.getElementById(`para-input${this.playerNumber}`).innerHTML = arr
+    document.getElementById(`para-input${this.pickerNumber}`).innerHTML = arr
   }
 })
 const picker2 = new DatePicker({
   data,
   onOk (arr) {
     console.log(arr)
-    document.getElementById(`para-input${this.playerNumber}`).innerHTML = arr
+    document.getElementById(`para-input${this.pickerNumber}`).innerHTML = arr
   }
 })
 
