@@ -2,7 +2,6 @@ sudo: false
 language: node_js
 node_js:
   - "8"
-  - "6"
 env:
   - CODECOV_TOKEN=8982fcc2-b7b1-43bc-9824-dd4eb47b38b7
 cache:
