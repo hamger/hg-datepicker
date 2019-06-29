@@ -106,6 +106,6 @@ import DatePicker from "hg-datepicker";
 
 ## Change Log
 
-### 2019.5.10
+### 2019.6.29
 
 > v2.0.0 使用 ES6 重构项目 & 添加实例方法 set、get 
