@@ -40,7 +40,6 @@ var picker = new DatePicker({
   }
 })
 var picker2 = new DatePicker({
-  inputId: 'date-input2',
   type: 'time', // 选择器类型
   start: [2, 30], // 开始时间
   end: [22, 20], // 结束时间

@@ -1,49 +1,55 @@
 /* eslint-env jest */
 import DatePicker from '../index'
 
-const data = [
-  [
-    { value: '预言家', description: '每晚可查验一名玩家' },
-    { value: '狼人', description: '每晚可击杀一名玩家' },
-    { value: '平民', description: 'xx' },
-    { value: '女巫', description: 'xx' },
-    { value: '猎人', description: 'xx' },
-    { value: '白痴', description: 'xx' }
-  ],
-  ['存活', '死亡', '吃刀', '票出', '吃毒', '中枪']
-]
-
-const picker = new DatePicker({
-  data,
-  title: '玩家属性',
+var picker = new DatePicker({
+  start: [2017, 1, 1],
+  end: [2018, 9, 17],
+  initialOption: [2018, 9, 10],
   style: {
-    liHeight: 42,
-    btnHeight: 50,
     btnLocation: 'bottom',
-    btnOffset: '22px',
-    titleColor: 'red',
-    okColor: 'red',
-    cancelColor: 'red',
-    btnBgColor: 'red',
-    contentColor: 'red',
-    contentBgColor: 'red',
-    upShadowColor: 'red',
-    downShadowColor: 'red',
-    lineColor: 'red'
+    liHeight: 45,
+    btnHeight: 50,
+    btnOffset: '30px',
+    okColor: '#5bcffe',
+    cancleColor: 'rgb(221, 159, 159)',
+    btnBgColor: 'rgba(141, 240, 128, 0.55)',
+    contentBgColor: '#adf499',
+    contentColor: '#000',
+    titleColor: 'green',
+    lineColor: '#00ff2f',
+    upShadow: 'linear-gradient(to bottom, rgb(14, 140, 14), rgba(14, 140, 14, 0))',
+    downShadow: 'linear-gradient(to top, rgb(14, 140, 14), rgba(14, 140, 14, 0))'
   },
-  cancel () {
-    console.log('取消选择')
+  cancel: function () {
+    console.log('取消日期选择')
   },
-  onOk (arr) {
+  onOk: function (arr) { // 回调函数
     console.log(arr)
-    document.getElementById(`para-input${this.pickerNumber}`).innerHTML = arr
+    document.getElementById('date-input' + this.get('pickerNumber')).innerHTML = arr
   }
 })
-const picker2 = new DatePicker({
-  data,
-  onOk (arr) {
+var picker2 = new DatePicker({
+  inputId: 'date-input2',
+  type: 'time', // 选择器类型
+  start: [2, 30], // 开始时间
+  end: [22, 20], // 结束时间
+  onOk: function (arr) {
     console.log(arr)
-    document.getElementById(`para-input${this.pickerNumber}`).innerHTML = arr
+    document.getElementById('time-input').innerHTML = arr
+  }
+})
+var picker3 = new DatePicker({
+  type: 'dateTime',
+  style: {
+    btnHeight: 44
+  },
+  start: [2020, 2, 2, 2, 20], // 开始时间
+  end: [2120, 4, 4, 5, 50], // 结束时间
+  hasSuffix: 'no', // 不添加时间单位
+  hasZero: 'no', // 单位数不显两位
+  onOk: function (arr) {
+    console.log(arr)
+    document.getElementById('datetime-input').innerHTML = arr
   }
 })
 
@@ -55,15 +61,23 @@ describe('picker test', () => {
   })
 
   it('picker', () => {
-    picker.show()
-    picker.hide()
-    picker.setTitle('1号玩家')
-    expect(picker.title).toBe('1号玩家')
+    picker.set({
+      pickerNumber: 1,
+      title: '1号选择器',
+      cancelText: 'cancel',
+      okText: 'ok'
+    })
+    expect(picker.get('title')).toBe('1号选择器')
+    expect(picker.get('pickerNumber')).toBe(1)
+    expect(picker.pickerNumber).toBe(undefined)
+    expect(picker.getResult()).toEqual([2018, 9, 10])
   })
   it('picker2', () => {
-    expect(picker2.getResult()).toEqual([
-      { value: '预言家', description: '每晚可查验一名玩家' },
-      '存活'
-    ])
+    picker2.show()
+    picker2.hide()
+  })
+  it('picker3', () => {
+    picker3.show()
+    picker3.hide()
   })
 })

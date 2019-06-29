@@ -256,54 +256,52 @@ export default class DatePicker {
    * 定义初始化事件函数
    */
   initEvent () {
-    let that = this
-    let wrap = that.wrap
-    that.container = $id(that.containerId)
+    this.container = $id(this.containerId)
 
     // 点击保存按钮隐藏选择器并输出结果
-    $id(that.okId).addEventListener('click', function () {
-      that.onOk(that.result())
-      that.hide()
+    $id(this.okId).addEventListener('click', () => {
+      this.onOk(this.getResult())
+      this.hide()
     })
 
     // 点击取消隐藏选择器
-    $id(that.cancelId).addEventListener('click', function () {
-      that.onCancel && that.onCancel()
-      that.hide()
+    $id(this.cancelId).addEventListener('click', () => {
+      this.onCancel && this.onCancel()
+      this.hide()
     })
 
     // 点击背景隐藏选择器
-    wrap.addEventListener('click', function (e) {
+    this.wrap.addEventListener('click', (e) => {
       if (
-        e.target.id === that.wrapId &&
-        wrap.classList.contains('hg-picker-bg-show')
+        e.target.id === this.wrapId &&
+        this.wrap.classList.contains('hg-picker-bg-show')
       ) {
-        that.onCancel && that.onCancel()
-        that.hide()
+        this.onCancel && this.onCancel()
+        this.hide()
       }
     })
 
     // 为每个 ul 元素绑定 touch 事件
-    that.dateUl.forEach(function (val, index) {
+    this.dateUl.forEach((val, index) => {
       if (val) {
         val.addEventListener(
           'touchstart',
-          function () {
-            that.touch(index)
+          () => {
+            this.touch(index)
           },
           false
         )
         val.addEventListener(
           'touchmove',
-          function () {
-            that.touch(index)
+          () => {
+            this.touch(index)
           },
           false
         )
         val.addEventListener(
           'touchend',
-          function () {
-            that.touch(index)
+          () => {
+            this.touch(index)
           },
           true
         )
@@ -492,9 +490,7 @@ export default class DatePicker {
   createContainer () {
     let div = document.createElement('div')
     div.id = this.wrapId
-    // 放在 body 中最后的位置
     document.body.appendChild(div)
-    // 每一目标元素对应一个唯一的选择器外包裹元素
     this.wrap = $id(this.wrapId)
     this.wrap.classList.add('hg-picker-bg')
   }
@@ -628,16 +624,15 @@ export default class DatePicker {
    * Explain : @i 需要处理的列的索引
    */
   renderLi (i) {
-    let that = this
-    that.dateUl[i].innerHTML = ''
+    this.dateUl[i].innerHTML = ''
     let lis = '<li></li><li></li>'
-    that.dateArr[i].forEach(function (val, index) {
-      val = that.addZero(val)
-      lis += '<li>' + val + that.suffix[i] + '</li>'
+    this.dateArr[i].forEach((val) => {
+      val = this.addZero(val)
+      lis += '<li>' + val + this.suffix[i] + '</li>'
     })
     lis += '<li></li><li></li>'
-    that.dateUl[i].innerHTML = lis
-    if (this.liHeight !== 40) { setChildStyle(that.dateUl[i], 'height', this.liHeight + 'px') }
+    this.dateUl[i].innerHTML = lis
+    if (this.liHeight !== 40) { setChildStyle(this.dateUl[i], 'height', this.liHeight + 'px') }
   }
   /**
    * 控制列表的滚动
@@ -758,7 +753,7 @@ export default class DatePicker {
    * 返回最终结果的数组
    * Return : Array
    */
-  result () {
+  getResult () {
     let arr = []
     for (let i = 0; i < this.dateArr.length; i++) {
       if (this.dateArr[i]) arr.push(this.dateArr[i][this.dateIndex[i]])
