@@ -1,10 +1,23 @@
 {
-  "extends": ["prettier"],
+  "extends": [
+    "standard"
+  ],
   "parser": "babel-eslint",
   "env": {
     "browser": true
   },
+  "plugins": [
+    "standard"
+  ],
   "rules": {
+    "semi": [
+      "error",
+      "never"
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
     "prefer-destructuring": "off",
     "no-bitwise": "off",
     "no-console": "off",

@@ -38,7 +38,7 @@
 
 ```js
 var datePicker = new DatePicker({
-  success: function(arr) {
+  onOk: function(arr) {
     // 回调函数
     console.log(arr);
   }
@@ -58,7 +58,7 @@ import DatePicker from "hg-datepicker";
 
 | key           | value                          | description                                                                                    |
 | ------------- | ------------------------------ | ---------------------------------------------------------------------------------------------- |
-| success       | Funtion                        | 确定后的回调函数，第一个参数为表示时间的数组，如[2002,2,2]表示 2002 年 2 月 2 号，必填         |
+| onOk       | Funtion                        | 确定后的回调函数，第一个参数为表示时间的数组，如[2002,2,2]表示 2002 年 2 月 2 号，必填         |
 | cancel        | Funtion                        | 点击取消按钮或者背景后的回调函数，选填                                                         |
 | type          | `time` \| `dateTime` \| `date` | 日期选择器的类型，`time`（分时），`dateTime`(年月日时分)，默认 `date`（年月日）                |
 | start         | Array\<Number\>                | 规定选择范围的开始时间，默认四年前                                                             |
@@ -80,7 +80,7 @@ import DatePicker from "hg-datepicker";
 | btnHeight       | Number | 按钮栏的高度（px），默认 `44`       |
 | btnOffset       | String | 按钮离边框的距离，默认 `20px`       |
 | titleColor      | String | 选择器标题的字体颜色                |
-| sureColor       | String | 选择器确定按钮的字体颜色            |
+| okColor       | String | 选择器确定按钮的字体颜色            |
 | cancelColor     | String | 选择器取消按钮的字体颜色            |
 | btnBgColor      | String | 选择器按钮栏的背景颜色              |
 | contentColor    | String | 选择器选择区域的文字颜色            |
@@ -93,9 +93,14 @@ import DatePicker from "hg-datepicker";
 
 | function       | param          | description                        |
 | -------------- | -------------- | ---------------------------------- |
-| show()         | `--`           | 呼起选择框（受 forbidSelect 限制） |
+| show()         | `--`           | 呼起选择框 |
 | hide()         | `--`           | 关闭选择框                         |
-| setTitle(text) | text: `String` | 修改标题内容                       |
+| set(obj) | obj:Object | 设置选择器属性 |
+| get(key) | key:String | 获取选择框属性 |
+
+
+> 参数 obj 中指定`title`、`cancelText`、`okText`、`a`、`onOk`、`onCancel`的值，会修改对应的选择器配置
+
 
 ## Change Log
 

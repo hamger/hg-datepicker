@@ -1,7 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env, argv) => {
   const config = {
@@ -11,18 +11,18 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, 'dist'),
       library: 'DatePicker',
       libraryTarget: 'umd',
-      libraryExport: 'default',
+      libraryExport: 'default'
     },
     devtool: argv.mode === 'production' ? false : 'cheap-module-eval-source-map',
     performance: {
-      hints: false,
+      hints: false
     },
     optimization: {},
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src'),
+        '@': path.resolve(__dirname, 'src')
       },
-      extensions: ['.js'],
+      extensions: ['.js']
     },
     module: {
       rules: [
@@ -31,26 +31,29 @@ module.exports = (env, argv) => {
           exclude: [/node_modules/],
           use: [
             {
-              loader: 'babel-loader',
+              loader: 'babel-loader'
             },
-          ],
+            {
+              loader: 'eslint-loader'
+            }
+          ]
         },
         {
           test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
         },
         {
           test: /\.html$/,
           use: [
             {
-              loader: 'html-loader',
-            },
-          ],
-        },
-      ],
+              loader: 'html-loader'
+            }
+          ]
+        }
+      ]
     },
-    plugins: [],
-  };
+    plugins: []
+  }
 
   if (argv.mode === 'development') {
     config.devServer = {
@@ -58,22 +61,22 @@ module.exports = (env, argv) => {
       hot: true,
       compress: true,
       stats: 'errors-only',
-      port: 8121,
-    };
+      port: 8121
+    }
 
     config.plugins = config.plugins.concat([
       new HtmlWebpackPlugin({
         filename: 'index.html',
         inject: true,
-        template: path.resolve(__dirname, './examples/index.html'),
+        template: path.resolve(__dirname, './examples/index.html')
       }),
       new webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
-        filename: '[name]-[hash].css',
+        filename: '[name]-[hash].css'
       }),
-      new webpack.optimize.ModuleConcatenationPlugin(),
-    ]);
+      new webpack.optimize.ModuleConcatenationPlugin()
+    ])
   }
 
-  return config;
-};
+  return config
+}
