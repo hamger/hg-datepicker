@@ -5,7 +5,7 @@
 
 移动端的日期选择器，支持三种类型的日期选择。
 
-> 1.x 版本于 2019年7月29号 之后停止维护，推荐使用 2.x 版本
+> 1.x 版本于 2019年7月29号 停止维护，推荐使用 [2.x 版本](https://github.com/hamger/hg-datepicker/tree/master)
 
 ## Demo
 
