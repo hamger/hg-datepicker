@@ -78,6 +78,19 @@ export default class DatePicker {
         new Date().getHours(),
         new Date().getMinutes()
       ]
+    } else if (this.type === 'month') {
+      this.start = config.start || [
+        new Date().getFullYear() - 4,
+        new Date().getMonth() + 1
+      ]
+      this.end = config.end || [
+        new Date().getFullYear() + 4,
+        new Date().getMonth() + 1
+      ]
+      this.initialOption = config.initialOption || [
+        new Date().getFullYear(),
+        new Date().getMonth() + 1
+      ]
     } else {
       this.start = config.start || [
         new Date().getFullYear() - 4,
@@ -118,6 +131,7 @@ export default class DatePicker {
     if (
       this.type !== 'time' &&
       this.type !== 'dateTime' &&
+      this.type !== 'month' &&
       this.type !== 'date'
     ) { throw Error('配置项 type 不合法.') }
     if (!isNumberArr(this.start)) throw Error('配置项 start 不合法')
@@ -145,6 +159,26 @@ export default class DatePicker {
           this.initialOption[0],
           this.initialOption[1] - 1,
           this.initialOption[2]
+        ).getTime()
+        if (start > end) throw Error('开始时间不能大于结束时间.')
+        if (first > end) this.initialOption = this.end
+        if (first < start) this.initialOption = this.start
+        break
+      case 'month':
+        if (this.start.length < 2) throw Error('配置项 start 不完整')
+        if (this.end.length < 2) throw Error('配置项 end 不完整')
+        if (this.initialOption.length < 2) { throw Error('配置项 initialOption 不完整') }
+        start = new Date(
+          this.start[0],
+          this.start[1] - 1,
+        ).getTime()
+        end = new Date(
+          this.end[0],
+          this.end[1] - 1,
+        ).getTime()
+        first = new Date(
+          this.initialOption[0],
+          this.initialOption[1] - 1,
         ).getTime()
         if (start > end) throw Error('开始时间不能大于结束时间.')
         if (first > end) this.initialOption = this.end
@@ -444,6 +478,9 @@ export default class DatePicker {
     switch (this.type) {
       case 'date':
         this.dateArr = [this.yearArr, this.monthArr, this.dayArr]
+        break
+      case 'month':
+        this.dateArr = [this.yearArr, this.monthArr]
         break
       case 'time':
         this.dateArr = [

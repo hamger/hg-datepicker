@@ -36,7 +36,7 @@ var picker = new DatePicker({
   },
   onOk: function (arr) { // 回调函数
     console.log(arr)
-    document.getElementById('date-input' + this.get('pickerNumber')).innerHTML = arr
+    document.getElementById('date-input' + picker.get('pickerNumber')).innerHTML = arr
   }
 })
 var picker2 = new DatePicker({
@@ -66,7 +66,7 @@ var picker3 = new DatePicker({
   }
 })
 
-window.select = function select (number) {
+window.select = function (number) {
   picker.set({
     pickerNumber: number,
     title: `${number}号选择器`
@@ -80,4 +80,19 @@ window.select2 = function () {
 
 window.select3 = function () {
   picker3.show()
+}
+
+var picker4 = new DatePicker({
+  type: 'month',
+  start: [2020, 2], // 开始时间
+  end: [2120, 4], // 结束时间
+  hasSuffix: 'no', // 不添加时间单位
+  onOk: function (arr) {
+    console.log(arr)
+    document.getElementById('month-input').innerHTML = arr
+  }
+})
+
+window.select4 = function () {
+  picker4.show()
 }

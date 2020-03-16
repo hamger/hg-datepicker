@@ -23,34 +23,78 @@
 
 ## Usage
 
-首先引入文件
+### 在 vue 等框架中使用
+
+```vue
+<template>
+  <div @click="select">选择年月</div>
+</template>
+<script>
+  import "hg-datepicker/picker.css";
+  import DatePicker from "hg-datepicker";
+
+  export default {
+    data() {
+      return {
+        picker: null
+      };
+    },
+    methods: {
+      select() {
+        this.picker.show()
+      }
+    },
+    mounted () {
+      this.picker = new DatePicker({
+        type: 'month', // 选择器类型
+        start: [2020, 2], // 开始时间
+        end: [2120, 4], // 结束时间
+        hasSuffix: 'no', // 不添加时间单位
+        onOk: function (arr) {
+          console.log(arr)
+        }
+      })
+    }
+  }
+</script>
+```
+
+### 在传统页面中使用
 
 ```html
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://unpkg.com/hg-datepicker/picker.css"
-/>
-<script src="https://unpkg.com/hg-datepicker/dist/hg-datepicker.js"></script>
+<head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://unpkg.com/hg-datepicker/picker.css"
+  />
+  <script src="https://unpkg.com/hg-datepicker/dist/hg-datepicker.js"></script>
+</head>
+<body>
+  <div onclick="select(1)" id="date-input1">选择年月日</div>
+  <script>
+    var picker = new DatePicker({
+      title: '日期选择',
+      initialOption: [2018, 3, 31],
+      cancel: function () {
+          console.log('取消日期选择');
+      },
+      onOk: function (arr) { // 回调函数
+          console.log(arr);
+          document.getElementById('date-input' + picker.get('pickerNumber')).innerHTML = arr
+      }
+    });
+    window.select = function (number) {
+      picker.set({
+          pickerNumber: number,
+          title: `${number}号选择器`
+      })
+      picker.show()
+    }
+  </script>
+</body>
 ```
 
-实例化日期选择器`new DatePicker(configuration)`
-
-```js
-var datePicker = new DatePicker({
-  onOk: function(arr) {
-    // 回调函数
-    console.log(arr);
-  }
-});
-```
-
-如果你使用构建工具，可以这样引入
-
-```js
-import "hg-datepicker/picker.css";
-import DatePicker from "hg-datepicker";
-```
 
 调用实例方法 show 呼起选择器，完整案例见[这里](https://github.com/hamger/hg-datepicker/blob/master/index.html)。
 
@@ -58,21 +102,21 @@ import DatePicker from "hg-datepicker";
 
 `configuration`是一个配置项的对象，可以接受如下选项：
 
-| key           | value                    | description                                                                                    |
-|---------------|--------------------------|------------------------------------------------------------------------------------------------|
-| onOk          | Funtion                  | 确定后的回调函数，第一个参数为表示时间的数组，如[2002,2,2]表示 2002 年 2 月 2 号，必填         |
-| cancel        | Funtion                  | 点击取消按钮或者背景后的回调函数，选填                                                         |
-| type          | `time`/`dateTime`/`date` | 日期选择器的类型，`time`（分时），`dateTime`(年月日时分)，默认 `date`（年月日）                |
-| start         | Array\<Number\>          | 规定选择范围的开始时间，默认四年前                                                             |
-| end           | Array\<Number\>          | 规定选择范围的结束时间，默认四年后                                                             |
-| initialOption | Array\<Number\>          | 规定初始显示的时间，默认当前时间                                                               |
-| title         | String                   | 选择器标题，默认为空                                                                           |
-| sureText      | String                   | 确定按钮文本，默认为“确定”                                                                     |
-| cancelText    | String                   | 取消按钮文本，默认为“取消”                                                                     |
-| hasSuffix     | `yes`/`no`               | 是否添加时间单位，默认 `yes`                                                                   |
-| hasZero       | `yes`/ `no`              | 一位数前是否加零，默认 `yes`                                                                   |
-| a             | Number                   | 惯性滚动加速度（正数, 单位 px/(ms \* ms)），规定滚动阻力，加速度越小缓冲距离越长，默认 `0.001` |
-| style         | Object                   | 包含样式配置的对象                                                                             |
+| key           | value                            | description                                                                                    |
+|---------------|----------------------------------|------------------------------------------------------------------------------------------------|
+| onOk          | Funtion                          | 确定后的回调函数，第一个参数为表示时间的数组，如[2002,2,2]表示 2002 年 2 月 2 号，必填         |
+| cancel        | Funtion                          | 点击取消按钮或者背景后的回调函数，选填                                                         |
+| type          | `time`/`dateTime`/`date`/`month` | 日期选择器的类型，`time`（分时），`dateTime`(年月日时分)，`month`(年月)，默认 `date`（年月日） |
+| start         | Array\<Number\>                  | 规定选择范围的开始时间，默认四年前                                                             |
+| end           | Array\<Number\>                  | 规定选择范围的结束时间，默认四年后                                                             |
+| initialOption | Array\<Number\>                  | 规定初始显示的时间，默认当前时间                                                               |
+| title         | String                           | 选择器标题，默认为空                                                                           |
+| sureText      | String                           | 确定按钮文本，默认为“确定”                                                                     |
+| cancelText    | String                           | 取消按钮文本，默认为“取消”                                                                     |
+| hasSuffix     | `yes`/`no`                       | 是否添加时间单位，默认 `yes`                                                                   |
+| hasZero       | `yes`/ `no`                      | 一位数前是否加零，默认 `yes`                                                                   |
+| a             | Number                           | 惯性滚动加速度（正数, 单位 px/(ms \* ms)），规定滚动阻力，加速度越小缓冲距离越长，默认 `0.001` |
+| style         | Object                           | 包含样式配置的对象                                                                             |
 
 `style`对象可以接受如下选项（以下配置项若仍无法满足需求，可自行修改并引入`picker.css`）：
 
@@ -107,5 +151,7 @@ import DatePicker from "hg-datepicker";
 ## Change Log
 
 ### 2019.6.29
+
+> v2.0.1 支持年月选择
 
 > v2.0.0 使用 ES6 重构项目 & 添加实例方法 set、get 
