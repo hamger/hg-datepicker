@@ -1,6 +1,6 @@
 {
   "name": "hg-datepicker",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
   "description": "a datepicker in the mobile terminal",
   "scripts": {
