@@ -84,8 +84,8 @@ window.select3 = function () {
 
 var picker4 = new DatePicker({
   type: 'month',
-  start: [2020, 2], // 开始时间
-  end: [2120, 4], // 结束时间
+  start: [2020, 2, 23], // 开始时间
+  end: [2120, 4, 11], // 结束时间
   hasSuffix: 'no', // 不添加时间单位
   onOk: function (arr) {
     console.log(arr)
