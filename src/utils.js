@@ -72,3 +72,10 @@ export function isNumberArr (arr) {
     })
   } else return false
 }
+
+/**
+ * 错误打印
+ */
+export function errLog (msg) {
+  throw Error(`[Error in hg-datepicker]: ${msg}`)
+}

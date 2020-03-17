@@ -4,7 +4,7 @@ import DatePicker from '../index'
 var picker = new DatePicker({
   start: [2017, 1, 1],
   end: [2018, 9, 17],
-  initialOption: [2018, 9, 10],
+  initValue: [2018, 9, 10],
   style: {
     btnLocation: 'bottom',
     liHeight: 45,

@@ -89,7 +89,7 @@
         var a6 = pass.getDate()
         var picker = new DatePicker({
             title: '日期选择',
-            initialOption: [2018, 3, 31],
+            initValue: [2018, 3, 31],
             cancel: function () {
                 console.log('取消日期选择');
             },
@@ -144,7 +144,7 @@
 
         var picker4 = new DatePicker({
             type: 'month',
-            initialOption: [1979, 10],
+            initValue: [1979, 10],
             start: [1960, 3],
             end: [2020, 3],
             hasSuffix: 'no', // 不添加时间单位

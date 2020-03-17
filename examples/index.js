@@ -15,7 +15,7 @@ var picker = new DatePicker({
   end: [a1, a2, a3], // 结束时间
   // start: [2017, 1, 1],
   // end: [2018, 9, 17],
-  // initialOption: [2018, 9, 10],
+  // initValue: [2018, 9, 10],
   // style: {
   //     btnLocation: 'bottom',
   //     liHeight: 45,
@@ -84,7 +84,7 @@ window.select3 = function () {
 
 var picker4 = new DatePicker({
   type: 'month',
-  initialOption: [1979, 10],
+  initValue: [1979, 10],
   start: [1960, 3],
   end: [2020, 3],
   hasSuffix: 'no', // 不添加时间单位
@@ -96,4 +96,12 @@ var picker4 = new DatePicker({
 
 window.select4 = function () {
   picker4.show()
+}
+
+window.setValue = function (arr) {
+  console.log(picker4.get('value'))
+  picker4.set({
+    value: arr
+  })
+  console.log(picker4.get('value'))
 }
