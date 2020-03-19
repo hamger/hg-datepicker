@@ -10,7 +10,7 @@
     "test": "cross-env BABEL_OUTPUT=commonjs jest",
     "lint": "eslint src",
     "codecov": "codecov",
-    "tonpm": "npm version patch && npm publish"
+    "tonpm": "npm run build && npm version patch && npm publish"
   },
   "keywords": [
     "hanger",
