@@ -74,6 +74,19 @@ export function isNumberArr (arr) {
 }
 
 /**
+ * 判断两个数组是否相等
+ * Return : Boolean
+ */
+export function equiArr (arr, arr2) {
+  if (arr instanceof Array && arr2 instanceof Array) {
+    var len = arr.length > arr2.length ? arr.length : arr2.length
+    return Array(len).fill(1).every(function (val, index) {
+      return arr[index] === arr2[index]
+    })
+  } else return false
+}
+
+/**
  * 错误打印
  */
 export function errLog (msg) {

@@ -54,10 +54,17 @@
           console.log(arr)
         }
       })
+    },
+    beforeDestroy() {
+      if (this.picker) {
+        this.picker.destroy()
+        this.picker = null
+      }
     }
   }
 </script>
 ```
+> 组件销毁时需要销毁 DatePicker 实例，防止内存溢出
 
 ### 在传统页面中使用
 

@@ -2,6 +2,7 @@ import {
   setChildStyle,
   $id,
   errLog,
+  equiArr,
   getArr
 } from './utils'
 import check, {
@@ -447,6 +448,8 @@ export default class DatePicker {
         else if (key === 'cancelText') $id(this.cancelId).innerHTML = value
       } else if (/^(value)$/.test(key)) {
         checkValue.call(this, value)
+        // 如果当前结果和设置的结果相等，不做操作
+        if (equiArr(value, this.get[key])) return
         this.previousTime = value
         for (let i = 0; i < value.length; i++) {
           if (value[i]) {
