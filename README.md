@@ -143,12 +143,17 @@
 | hide()   | `--`       | 关闭选择框     |
 | set(obj) | obj:Object | 设置选择器属性 |
 | get(key) | key:String | 获取选择框属性 |
+| destroy() | `--`      | 销毁选择器 |
 
 当 key 为`title`、`cancelText`、`okText`、`a`、`onOk`、`onCancel`时，视为设置/获取对应的选择器配置。当 key 为`value`时，视为设置/获取选择器的值。其实情况视为自定义的参数。
 
 > picker.set({value: [1992, 3]}) 可用于实现动态地设置呼起选择器时初始显示的时间
 
 ## Change Log
+
+### 2020.3.19
+
+> v2.2.0 实现选择器销毁的实例方法
 
 ### 2020.3.17
 

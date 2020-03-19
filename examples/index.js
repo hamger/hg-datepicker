@@ -105,3 +105,8 @@ window.setValue = function (arr) {
   })
   console.log(picker4.get('value'))
 }
+
+window.destroy = function (arr) {
+  picker4.destroy()
+  console.log(picker4)
+}

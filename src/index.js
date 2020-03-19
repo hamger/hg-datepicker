@@ -471,4 +471,10 @@ export default class DatePicker {
       return this[property][key]
     }
   }
+  /**
+   * 销毁组件
+   */
+  destroy () {
+    $id(this.wrapId).remove()
+  }
 }

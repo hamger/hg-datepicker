@@ -1,10 +1,11 @@
 {
   "name": "hg-datepicker",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Hanger <2313303800@qq.com> (https://hamger.github.io)",
   "description": "a datepicker in the mobile terminal",
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
+    "start": "npm run dev",
     "build": "webpack --mode=production",
     "test": "cross-env BABEL_OUTPUT=commonjs jest",
     "lint": "eslint src",
