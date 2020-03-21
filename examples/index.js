@@ -84,7 +84,7 @@ window.select3 = function () {
 
 var picker4 = new DatePicker({
   type: 'month',
-  initValue: [1979, 10],
+  initValue: [1994, 10],
   start: [1960, 3],
   end: [2020, 3],
   hasSuffix: 'no', // 不添加时间单位
@@ -99,11 +99,9 @@ window.select4 = function () {
 }
 
 window.setValue = function (arr) {
-  console.log(picker4.get('value'))
   picker4.set({
     value: arr
   })
-  console.log(picker4.get('value'))
 }
 
 window.destroy = function (arr) {
