@@ -19,7 +19,7 @@ function bindTouch (i) {
       } else this.abled = true
       this.startY = event.touches[0].clientY
       this.curPos[i] = this.curDis[i]
-      this.previousTime[i] = this.curDate(i)
+      this.previousTime[i] = this.getCurDate(i)
       this.moveNumber = 1
       this.moveSpeed = []
       break
@@ -35,9 +35,9 @@ function bindTouch (i) {
       }
       if (
         this.curDis[i] <=
-        -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight
+        -1 * (this.liCount[i] - 1 + 1.5) * this.liHeight
       ) {
-        this.curDis[i] = -1 * (this.liNum[i] - 1 + 1.5) * this.liHeight
+        this.curDis[i] = -1 * (this.liCount[i] - 1 + 1.5) * this.liHeight
       }
       this.roll(i)
       // 每运动 130 毫秒，记录一次速度
@@ -63,7 +63,7 @@ function bindTouch (i) {
       for (let j = i; j < this.maps.length - 1; j++) {
         if (this.maps[j + 1]) this.changeDate(j + 1)
       }
-      this.previousTime[i] = this.curDate(i)
+      this.previousTime[i] = this.getCurDate(i)
       break
   }
 }

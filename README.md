@@ -1,10 +1,10 @@
 # hg-datepicker
-
+<!-- 
 ![build](https://travis-ci.org/hamger/hg-datepicker.svg?branch=master)
 ![NPM](https://img.shields.io/npm/l/hg-datepicker.svg?color=orange)
-[![npm](https://img.shields.io/npm/v/hg-datepicker.svg?color=blue)](https://www.npmjs.com/package/hg-datepicker)
+[![npm](https://img.shields.io/npm/v/hg-datepicker.svg?color=blue)](https://www.npmjs.com/package/hg-datepicker) -->
 
-移动端的日期选择器，支持三种类型的日期选择。
+移动端的日期选择器，支持多种类型的日期选择。具有很好的适应性，可以在任何前端框架中使用。
 
 > 这里是 2.x 的文档，1.x 文档请点击[这里](https://github.com/hamger/hg-datepicker/tree/v1.x)。
 

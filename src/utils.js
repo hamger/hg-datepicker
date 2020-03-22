@@ -92,3 +92,16 @@ export function equiArr (arr, arr2) {
 export function errLog (msg) {
   throw Error(`[Error in hg-datepicker]: ${msg}`)
 }
+
+/**
+ * 判断是否是闰年
+ * Explain : @year 年份
+ */
+export function isLeapYear (year) {
+  let cond1 = year % 4 === 0
+  let cond2 = year % 100 !== 0
+  let cond3 = year % 400 === 0
+  let cond = (cond1 && cond2) || cond3
+  if (cond) return true
+  else return false
+}

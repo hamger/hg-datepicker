@@ -1,7 +1,41 @@
 import {
-  generateUUID
+  generateUUID,
+  errLog
 } from './utils'
 
+  /**
+   * 根据选择器类型确定 maps
+   */
+function initmaps () {
+  switch (this.type) {
+    case 'date':
+      this.maps = [this.yearMap, this.monthMap, this.dayMap]
+      break
+    case 'month':
+      this.maps = [this.yearMap, this.monthMap]
+      break
+    case 'time':
+      this.maps = [
+        undefined,
+        undefined,
+        undefined,
+        this.hourMap,
+        this.minuteMap
+      ]
+      break
+    case 'dateTime':
+      this.maps = [
+        this.yearMap,
+        this.monthMap,
+        this.dayMap,
+        this.hourMap,
+        this.minuteMap
+      ]
+      break
+    default:
+      errLog('配置项 type 不合法')
+  }
+}
 function label () {
   this.previousTime = [] // 储存前一次操作的时间
   this.yearMap = [] // 储存年份的数组
@@ -10,7 +44,7 @@ function label () {
   this.dayNumArr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 储存每月天数的数组
   this.hourMap = [] // 储存小时的数组
   this.minuteMap = [] // 储存分钟的数组
-  this.maps = [] // 储存各项时间的数组
+  this.maps = [] // 储存各项时间的选择范围
   this.dateIndex = [] // 储存当前各项时间索引的数组
   this.suffix =
     this.hasSuffix === 'yes' ? ['年', '月', '日', '时', '分'] : ['', '', '', '', ''] // 储存各项时间后缀的数组
@@ -21,7 +55,7 @@ function label () {
   this.btnHeight =
     this.style && this.style.btnHeight ? this.style.btnHeight : 44 // 按钮的高度
   this.dateUl = [] // 每个ul元素
-  this.liNum = [] // 每个ul中有多少个可选li
+  this.liCount = [] // 每个ul中有多少个可选li
   this.curDis = [] // 每个ul当前偏离的距离
   this.curPos = [] // touchstart时每个ul偏离的距离
   this.startY = 0 // touchstart的位置
@@ -46,8 +80,8 @@ function label () {
       this.ulCount++
     }
   }
-  this.initmaps()
-  this.initLiNum()
+  initmaps.call(this)
+  this.liCount = this.maps.map(item => item && item.length)
 }
 
 export default label

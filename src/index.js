@@ -3,6 +3,7 @@ import {
   $id,
   errLog,
   equiArr,
+  isLeapYear,
   getArr
 } from './utils'
 import check, {
@@ -143,20 +144,20 @@ export default class DatePicker {
         this.monthMap = []
         if (this.start[i - 1] === this.end[i - 1]) {
           this.monthMap = getArr(this.start[i], this.end[i])
-        } else if (this.curDate(i - 1) === this.start[i - 1]) {
+        } else if (this.getCurDate(i - 1) === this.start[i - 1]) {
           this.monthMap = getArr(this.start[i], 12)
-        } else if (this.curDate(i - 1) === this.end[i - 1]) {
+        } else if (this.getCurDate(i - 1) === this.end[i - 1]) {
           this.monthMap = getArr(1, this.end[i])
         } else this.monthMap = getArr(1, 12)
         break
       case 2:
         this.dayMap = []
         // 如果是闰年，2月改为29天
-        if (this.isLeapYear(this.curDate(0))) this.dayNumArr[1] = 29
+        if (isLeapYear(this.getCurDate(0))) this.dayNumArr[1] = 29
         else this.dayNumArr[1] = 28
         curTime = new Date(
-          this.curDate(0),
-          this.curDate(1) - 1
+          this.getCurDate(0),
+          this.getCurDate(1) - 1
         ).getTime()
         startTime = new Date(this.start[0], this.start[1] - 1).getTime()
         endTime = new Date(this.end[0], this.end[1] - 1).getTime()
@@ -165,17 +166,17 @@ export default class DatePicker {
         } else if (curTime === startTime) {
           this.dayMap = getArr(
             this.start[2],
-            this.dayNumArr[this.curDate(1) - 1]
+            this.dayNumArr[this.getCurDate(1) - 1]
           )
         } else if (curTime === endTime) this.dayMap = getArr(1, this.end[2])
-        else this.dayMap = getArr(1, this.dayNumArr[this.curDate(1) - 1])
+        else this.dayMap = getArr(1, this.dayNumArr[this.getCurDate(1) - 1])
         break
       case 3:
         if (this.type === 'dateTime') {
           curTime = new Date(
-            this.curDate(0),
-            this.curDate(1) - 1,
-            this.curDate(2)
+            this.getCurDate(0),
+            this.getCurDate(1) - 1,
+            this.getCurDate(2)
           ).getTime()
           startTime = new Date(
             this.start[0],
@@ -200,10 +201,10 @@ export default class DatePicker {
       case 4:
         if (this.type === 'dateTime') {
           curTime = new Date(
-            this.curDate(0),
-            this.curDate(1) - 1,
-            this.curDate(2),
-            this.curDate(3)
+            this.getCurDate(0),
+            this.getCurDate(1) - 1,
+            this.getCurDate(2),
+            this.getCurDate(3)
           ).getTime()
           startTime = new Date(
             this.start[0],
@@ -227,9 +228,9 @@ export default class DatePicker {
         } else {
           if (this.start[i - 1] === this.end[i - 1]) {
             this.minuteMap = getArr(this.start[i], this.end[i])
-          } else if (this.curDate(i - 1) === this.start[i - 1]) {
+          } else if (this.getCurDate(i - 1) === this.start[i - 1]) {
             this.minuteMap = getArr(this.start[i], 59)
-          } else if (this.curDate(i - 1) === this.end[i - 1]) {
+          } else if (this.getCurDate(i - 1) === this.end[i - 1]) {
             this.minuteMap = getArr(0, this.end[i])
           } else this.minuteMap = getArr(0, 59)
         }
@@ -237,23 +238,24 @@ export default class DatePicker {
     }
   }
   /**
-   * 获取对应列的所有数据
+   * 获取对应列的所有枚举
    * Explain : @i 需要处理的列的索引
    */
-  CurArr (i) {
-    let curArr = []
-    if (i === 0) curArr = this.yearMap
-    if (i === 1) curArr = this.monthMap
-    if (i === 2) curArr = this.dayMap
-    if (i === 3) curArr = this.hourMap
-    if (i === 4) curArr = this.minuteMap
-    return curArr
+  getCurMap (i) {
+    const curMap = {
+      0: this.yearMap,
+      1: this.monthMap,
+      2: this.dayMap,
+      3: this.hourMap,
+      4: this.minuteMap
+    }
+    return curMap[i]
   }
   /**
    * 获取对应列的结果
    * Explain : @i 需要处理的列的索引
    */
-  curDate (i) {
+  getCurDate (i) {
     let curDate = 0
     // this.maps 还没有被赋值的情况
     if (this.maps.length === 0) curDate = this.initValue[i]
@@ -268,7 +270,7 @@ export default class DatePicker {
    * Explain : @i 需要处理的列的索引
    */
   calculateDis (i) {
-    let curArr = this.CurArr(i)
+    let curArr = this.getCurMap(i)
     if (this.previousTime[i] > curArr[curArr.length - 1]) this.dateIndex[i] = curArr.length - 1
     else if (this.previousTime[i] < curArr[0]) this.dateIndex[i] = 0
     else {
@@ -280,56 +282,6 @@ export default class DatePicker {
       }
     }
     this.curDis[i] = -1 * this.liHeight * this.dateIndex[i]
-  }
-  /**
-   * 根据选择器类型确定 maps
-   */
-  initmaps () {
-    switch (this.type) {
-      case 'date':
-        this.maps = [this.yearMap, this.monthMap, this.dayMap]
-        break
-      case 'month':
-        this.maps = [this.yearMap, this.monthMap]
-        break
-      case 'time':
-        this.maps = [
-          undefined,
-          undefined,
-          undefined,
-          this.hourMap,
-          this.minuteMap
-        ]
-        break
-      case 'dateTime':
-        this.maps = [
-          this.yearMap,
-          this.monthMap,
-          this.dayMap,
-          this.hourMap,
-          this.minuteMap
-        ]
-        break
-      default:
-        errLog('配置项 type 不合法')
-    }
-  }
-  /**
-   * 判断每个 ul 中有多少个 li 选项
-   * Explain : @index 需要处理的列的索引
-   */
-  initLiNum (index) {
-    if (index) {
-      if (this.maps[index] !== undefined) {
-        this.liNum[index] = this.maps[index].length
-      }
-    } else {
-      for (let i = 0; i < this.maps.length; i++) {
-        if (this.maps[i] !== undefined) {
-          this.liNum[i] = this.maps[i].length
-        }
-      }
-    }
   }
   /**
    * 渲染 li 元素
@@ -371,8 +323,8 @@ export default class DatePicker {
    * Explain : @i 需要定位的列的索引
    */
   fixate (i) {
-    if (this.curDis[i] <= -1 * (this.liNum[i] - 1) * this.liHeight) {
-      this.dateIndex[i] = this.liNum[i] - 1
+    if (this.curDis[i] <= -1 * (this.liCount[i] - 1) * this.liHeight) {
+      this.dateIndex[i] = this.liCount[i] - 1
     } else if (this.curDis[i] >= 0) this.dateIndex[i] = 0
     else this.dateIndex[i] = -1 * Math.round(this.curDis[i] / this.liHeight)
     this.curDis[i] = -1 * this.liHeight * this.dateIndex[i]
@@ -384,34 +336,11 @@ export default class DatePicker {
    */
   changeDate (i) {
     this.calculateMap(i)
-    this.maps[i] = this.CurArr(i)
+    this.maps[i] = this.getCurMap(i)
     this.calculateDis(i)
-    this.initLiNum(i)
+    this.liCount[i] = this.maps[i].length
     this.renderLi(i)
     this.roll(i)
-  }
-  /**
-   * 判断是否是闰年
-   * Explain : @year 年份
-   */
-  isLeapYear (year) {
-    let cond1 = year % 4 === 0
-    let cond2 = year % 100 !== 0
-    let cond3 = year % 400 === 0
-    let cond = (cond1 && cond2) || cond3
-    if (cond) return true
-    else return false
-  }
-  /**
-   * 返回最终结果的数组
-   * Return : Array
-   */
-  getResult () {
-    let arr = []
-    for (let i = 0; i < this.maps.length; i++) {
-      if (this.maps[i]) arr.push(this.maps[i][this.dateIndex[i]])
-    }
-    return arr
   }
   /**
    * 加零，一位数显示为两位
@@ -474,6 +403,17 @@ export default class DatePicker {
     } else {
       return this[property][key]
     }
+  }
+  /**
+   * 返回最终结果的数组
+   * Return : Array
+   */
+  getResult () {
+    let arr = []
+    for (let i = 0; i < this.maps.length; i++) {
+      if (this.maps[i]) arr.push(this.maps[i][this.dateIndex[i]])
+    }
+    return arr
   }
   /**
    * 销毁组件
