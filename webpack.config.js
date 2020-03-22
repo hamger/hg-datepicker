@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env, argv) => {
   const config = {
-    entry: argv.mode === 'production' ? './src/index.js' : './examples/index.js',
+    entry: argv.mode === 'production' ? './src/index.js' : './examples/example.js',
     output: {
       filename: 'hg-datepicker.js',
       path: path.resolve(__dirname, 'dist'),
@@ -66,9 +66,9 @@ module.exports = (env, argv) => {
 
     config.plugins = config.plugins.concat([
       new HtmlWebpackPlugin({
-        filename: 'index.html',
+        filename: 'example.html',
         inject: true,
-        template: path.resolve(__dirname, './examples/index.html')
+        template: path.resolve(__dirname, './examples/example.html')
       }),
       new webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
