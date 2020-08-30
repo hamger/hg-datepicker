@@ -55,10 +55,7 @@ export default {
     });
   },
   beforeDestroy() {
-    if (this.picker) {
-      this.picker.destroy();
-      this.picker = null;
-    }
+    this.picker.destroy();
   }
 };
 </script>
